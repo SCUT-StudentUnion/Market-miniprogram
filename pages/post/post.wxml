@@ -1,10 +1,9 @@
 <view class="weui-flex" style='background:#FFFFFF;height:2.3em;display:flex;justify-content:flex-start;'>
   <text class="placeholder" style='width:16%;font-size:8px;background:white;'>请选择分类\n右滑获取更多</text>
   <scroll-view scroll-x class="" style="white-space: nowrap;width:70%;margin: 5px;text-align: center;color:white;right:0px;position:absolute">
-    <view wx:for="{{types}}" class='{{item.status}}' bindtap='tapcat' data-in='{{index}}'>{{item.name}}</view>
+    <view wx:for="{{types}}" class="category {{item.isSelected ? 'selected' : ''}}" bindtap='tapcat' data-in='{{index}}'>{{item.name}}</view>
   </scroll-view>
 </view>
-
 
 <view class="weui-cells weui-cells_after-title" style='margin-top:15px;'>
   <view class="weui-cell">
@@ -33,12 +32,10 @@
       </label>
     </checkbox-group>
 
-
     <div style="display:flex;justify-content:flex-start;margin:3px 30px">
       <label class='weui-agree__text weui-agree' style='color:black;font-size:12px;margin-right:-6px;flex-grow:0'>联系方式</label>
       <input class="well-input" placeholder=" 推荐电话/QQ/微信" style='background-color:#ebebeb;font-size:12px;margin-left:-6px;padding:0px 10px;flex-grow:1' bindinput='sync1' />
     </div>
-
 
     <div style="display:inline-flex;justify-content:flex-start;margin:3px 30px">
       <div style='flex-grow:1;display:flex;justify-content:flex-start;'>

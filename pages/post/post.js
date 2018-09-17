@@ -3,13 +3,13 @@ Page({
     text: "data",
     types: [{
       name: "电子产品",
-      status: 'selected'
+      isSelected: true
     }, {
       name: "生活用具",
-      status: 'category'
+      isSelected: false
     }, {
       name: "书籍教材",
-      status: 'category'
+      isSelected: false
     }],
     img: [],
     detail: '',
@@ -45,62 +45,30 @@ Page({
           mythis.setData({
             img: []
           });
-
         }
       }
     });
-
-  },
-  sync0: function(e) {
-
-    this.setData({
-      detail: e.detail.value
-    })
-  },
-  sync1: function(e) {
-
-    this.setData({
-      contact: e.detail.value
-    })
-  },
-  sync2: function(e) {
-
-    this.setData({
-      bought: e.detail.value
-    })
-  },
-  sync3: function(e) {
-
-    this.setData({
-      sell: e.detail.value
-    })
   },
   tapcat: function(e) {
     for (var j = 0; j < this.data.types.length; j++) {
-      this.data.types[j].status = 'category';
+      this.data.types[j].isSelected = false;
     }
     var index = e.target.dataset.in;
-    this.data.types[index].status = 'selected';
+    this.data.types[index].isSelected = true;
     this.setData({
       types: this.data.types,
       index: index
-    })
-
+    });
   },
   bindAgreeChange: function(e) {
     if (this.data.isAgree) {
       this.setData({
         isAgree: "" //checkbox[0]='agree'或者empty
       })
-    }
-    else{
+    } else {
       this.setData({
         isAgree: "ture" //checkbox[0]='agree'或者empty
       })
     }
-  },
-  commit:function(){
-
   }
-
 })

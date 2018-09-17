@@ -22,7 +22,7 @@
       }
     ],
     "color": "#cccccc",
-    "selectedColor":"#00b26a"
+    "selectedColor": "#00b26a"
   },
   "networkTimeout": {
     "request": 10000,
