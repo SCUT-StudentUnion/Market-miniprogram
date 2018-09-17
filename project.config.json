@@ -1,23 +1,16 @@
 {
-	"description": "项目配置文件",
-	"packOptions": {
-		"ignore": []
-	},
 	"setting": {
 		"urlCheck": true,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
-		"newFeature": true
+		"newFeature": true,
+		"nodeModules": true
 	},
-	"compileType": "miniprogram",
-	"libVersion": "2.0.4",
 	"appid": "wx2d51bf22a78c11f6",
 	"projectname": "Market-miniprogram",
-	"debugOptions": {
-		"hidedInDevtools": []
-	},
-	"isGameTourist": false,
+	"libVersion": "2.2.5",
+	"compileType": "miniprogram",
 	"condition": {
 		"search": {
 			"current": -1,
@@ -27,12 +20,11 @@
 			"current": -1,
 			"list": []
 		},
-		"game": {
-			"currentL": -1,
+		"plugin": {
+			"current": -1,
 			"list": []
 		},
-		"miniprogram": {
-			"current": -1,
+		"game": {
 			"list": []
 		}
 	}
