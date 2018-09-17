@@ -51,7 +51,7 @@ Page({
     });
 
   },
-  syncd: function(e) {
+  sync0: function(e) {
 
     this.setData({
       detail: e.detail.value
@@ -98,6 +98,9 @@ Page({
         isAgree: "ture" //checkbox[0]='agree'或者empty
       })
     }
+  },
+  commit:function(){
+
   }
 
 })

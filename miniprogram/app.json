@@ -1,41 +1,8 @@
 {
   "cloud": true,
   "pages": [
-    "pages/post/post",
     "pages/index/index",
-    "pages/userConsole/userConsole",
-    "pages/storageConsole/storageConsole",
-    "pages/databaseGuide/databaseGuide",
-    "pages/addFunction/addFunction",
-    "pages/deployFunctions/deployFunctions",
-    "pages/chooseLib/chooseLib",
-    "example/index",
-    "example/button/button",
-    "example/list/list",
-    "example/input/input",
-    "example/slider/slider",
-    "example/uploader/uploader",
-    "example/article/article",
-    "example/badge/badge",
-    "example/flex/flex",
-    "example/footer/footer",
-    "example/gallery/gallery",
-    "example/grid/grid",
-    "example/icons/icons",
-    "example/loadmore/loadmore",
-    "example/panel/panel",
-    "example/preview/preview",
-    "example/progress/progress",
-    "example/actionsheet/actionsheet",
-    "example/dialog/dialog",
-    "example/msg/msg",
-    "example/msg/msg_success",
-    "example/msg/msg_fail",
-    "example/picker/picker",
-    "example/toast/toast",
-    "example/navbar/navbar",
-    "example/tabbar/tabbar",
-    "example/searchbar/searchbar"
+    "pages/post/post"
   ],
   "window": {
     "backgroundColor": "#0071BD",
@@ -47,19 +14,21 @@
   "tabBar": {
     "list": [
       {
-        "pagePath": "example/index",
-        "text": "index"
+        "pagePath": "pages/index/index",
+        "text": "主页"
       },
       {
-        "pagePath":"pages/post/post",
-        "text":"post"
+        "pagePath": "pages/post/post",
+        "text": "发布"
       }
-    ]
+    ],
+    "color": "#cccccc",
+    "selectedColor":"#00b26a"
   },
-    "networkTimeout": {
-      "request": 10000,
-      "connectSocket": 10000,
-      "uploadFile": 10000,
-      "downloadFile": 10000
-    }
+  "networkTimeout": {
+    "request": 10000,
+    "connectSocket": 10000,
+    "uploadFile": 10000,
+    "downloadFile": 10000
+  }
 }
