@@ -1,11 +1,10 @@
-// pages/detail/detail.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    text:""
+    text: ""
   },
 
   /**
@@ -13,7 +12,7 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      text:options.id
+      text: options.id
     })
   },
 
