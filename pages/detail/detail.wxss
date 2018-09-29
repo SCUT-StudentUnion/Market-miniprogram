@@ -1,1 +1,21 @@
 /* pages/detail/detail.wxss */
+
+.mycontainer {
+  display: flex;
+  background: white;
+  justify-content: flex-start;
+}
+
+.badge {
+  background: #1073ba;
+  border-radius: 15rpx;
+  color: white;
+  font-size: 22rpx;
+  padding: 10rpx;
+  margin-right: 10rpx;
+}
+
+.title{
+  font-size:28rpx;
+  font-weight: bold;
+}

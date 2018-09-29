@@ -1,9 +1,11 @@
 {
   "pages": [
+    "pages/detail/detail",
+        "pages/index/index",
     "pages/list/list",
-    "pages/index/index",
-    "pages/post/post",
-    "pages/detail/detail"
+
+    "pages/post/post"
+    
   ],
   "window": {
     "backgroundColor": "#0071BD",

@@ -1,2 +1,13 @@
 <!--pages/detail/detail.wxml-->
-<text>{{text}}</text>
+
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell">
+  <view class='badge'>体育用品</view>
+    <view class="weui-cell__bd title">网球拍大甩卖</view>
+    <view class="weui-cell__ft">说明文字</view>
+  </view>
+</view>
+
+<view class="mycontainer" style='display:flex'>
+  <view style='background:red;width:50%'><text>{{text}}</text></view><view style='background:blue;width:20%'>a</view>
+</view>
