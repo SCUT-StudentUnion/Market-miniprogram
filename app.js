@@ -1,8 +1,22 @@
 App({
-  data:{
-    
+  globalData: {
+
   },
   onLaunch: function () {
-    this.globalData = {}
+    wx.login({
+      success: res => {
+        wx.request({
+          url: 'https://market-staging.huww98.cn/api/wechat/login',
+          method: 'POST',
+          data: {
+            code: res.code
+          },
+          success: function (loginResult) {
+            console.log(loginResult.statusCode);
+            console.log(loginResult.data);
+          }
+        });
+      }
+    });
   }
 })
