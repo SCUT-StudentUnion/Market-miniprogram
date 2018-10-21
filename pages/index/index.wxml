@@ -1,4 +1,3 @@
-<!--index.wxml-->
 <view class="container">
 
   <view class="uploader">
@@ -7,7 +6,7 @@
     </navigator>
   </view>
 
-    <view class="uploader">
+  <view class="uploader">
     <navigator url="../list/list" open-type="navigate" class="uploader-text">
       <text style='padding-left:40px'>商品列表</text>
     </navigator>

@@ -1,9 +1,4 @@
-// pages/list/list.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     goods_list: [{
       id:1,
