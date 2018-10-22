@@ -1,14 +1,11 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/navigater/navigater",
+   
     "pages/detail/detail",
-  
-    
-     
     "pages/list/list",
-
     "pages/post/post"
-
   ],
   "window": {
     "backgroundColor": "#0071BD",
@@ -18,7 +15,10 @@
     "navigationBarTextStyle": "white"
   },
   "tabBar": {
-    "list": [
+    "list": [{
+      "pagePath": "pages/navigater/navigater",
+      "text": "开发版页面"
+    },
       {
         "pagePath": "pages/index/index",
         "text": "主页"
