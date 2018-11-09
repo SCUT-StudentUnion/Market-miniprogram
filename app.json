@@ -1,11 +1,14 @@
 {
   "pages": [
-    "pages/index/index",
+    "pages/i/i",
     "pages/navigater/navigater",
-   
+    "pages/index/index",
     "pages/detail/detail",
     "pages/list/list",
-    "pages/post/post"
+    "pages/post/post",
+    "pages/issue/issue",
+    "pages/favorite/favorite"
+    
   ],
   "window": {
     "backgroundColor": "#0071BD",
@@ -15,10 +18,11 @@
     "navigationBarTextStyle": "white"
   },
   "tabBar": {
-    "list": [{
-      "pagePath": "pages/navigater/navigater",
-      "text": "开发版页面"
-    },
+    "list": [
+      {
+        "pagePath": "pages/navigater/navigater",
+        "text": "开发版页面"
+      },
       {
         "pagePath": "pages/index/index",
         "text": "主页"
@@ -26,6 +30,10 @@
       {
         "pagePath": "pages/post/post",
         "text": "发布"
+      },
+      {
+        "pagePath":"pages/i/i",
+        "text":"我"
       }
     ],
     "color": "#cccccc",
@@ -36,5 +44,10 @@
     "connectSocket": 10000,
     "uploadFile": 10000,
     "downloadFile": 10000
+  },
+  "usingComponents": {
+    "i-collapse": "dist/collapse/index",
+    "i-collapse-item": "dist/collapse-item/index",
+    "i-button": "../../dist/button/index"
   }
 }

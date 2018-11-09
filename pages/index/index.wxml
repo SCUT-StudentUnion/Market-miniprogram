@@ -45,7 +45,7 @@
 
 
 
-  <scroll-view scroll-x style='height:300rpx;display:flex;white-space: nowrap;background:white'>
+  <scroll-view scroll-x style='height:300rpx;display:flex;white-space: nowrap;background:white' scroll-left='{{scroll_left}}'>
     
       <image wx:for='{{carousel}}' src='{{item.img}}' style='display:inline-block;height:100%;width:100%'></image>
     

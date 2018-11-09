@@ -13,20 +13,20 @@ Page({
         id: 0,
         title: '发布二手信息',
         url: '/pages/post/post',
-        icon:'',
-      opentype:'switchTab'
+        icon: '',
+        opentype: 'switchTab'
       },
       {
         id: 1,
         title: "商品列表",
         url: "/pages/list/list",
-        icon:'',
-        opentype:'navigate'
+        icon: '',
+        opentype: 'navigate'
       }, {
         id: 2,
         title: '商品详细信息',
         url: "/pages/detail/detail",
-        icon:'',
+        icon: '',
         opentype: 'navigate'
       },
       {
@@ -51,18 +51,18 @@ Page({
         opentype: 'navigate'
       }
     ],
-    carousel:[
-      {
-        id:0,
-        img:'/images/psb2.jpeg',
-        url:'/pages/detail/detail'
+    carousel: [{
+        id: 0,
+        img: '/images/psb2.jpeg',
+        url: '/pages/detail/detail'
       },
       {
         id: 1,
         img: '/images/psb.webp',
         url: '/pages/detail/detail'
       }
-    ]
+    ],
+    scroll_left: 0
   },
 
   onLoad: function() {

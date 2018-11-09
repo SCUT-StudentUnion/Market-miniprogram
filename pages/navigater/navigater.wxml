@@ -24,4 +24,22 @@
     </navigator>
   </view>
 
+    <view class="uploader">
+    <navigator url="../issue/issue" open-type="navigate" class="uploader-text">
+      <text style='padding-left:40px'>我的发布</text>
+    </navigator>
+  </view>
+
+      <view class="uploader">
+    <navigator url="../favorite/favorite" open-type="navigate" class="uploader-text">
+      <text style='padding-left:40px'>我的收藏</text>
+    </navigator>
+  </view>
+
+      <view class="uploader">
+    <navigator url="../i/i" open-type="switchTab" class="uploader-text">
+      <text style='padding-left:40px'>我</text>
+    </navigator>
+  </view>
+
 </view>

@@ -1,5 +1,6 @@
 Page({
   data: {
+    option:'',//决定进入某个分类列表或收藏列表
     goods_list: [{
       id:1,
       title: "小风车",
@@ -24,7 +25,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    this.setData({
+      option: options.id
+    })
   },
 
   /**

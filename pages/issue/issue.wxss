@@ -1,0 +1,11 @@
+/* pages/issue/issue.wxss */
+.issue_title{
+  margin-top:20rpx;
+  background:white;
+  line-height: 80rpx;
+}
+.issue_img{
+  display: inline-block;
+  height: 100rpx;
+  width: 100rpx;
+}
