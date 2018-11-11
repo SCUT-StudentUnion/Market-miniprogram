@@ -19,7 +19,8 @@ Component({
     properties: {
         title: String,
         name: String,
-        category:String
+        category:String,
+        icontype:String
     },
 
     data: {

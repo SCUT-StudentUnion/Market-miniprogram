@@ -2,6 +2,7 @@ const app = getApp()
 
 Page({
   data: {
+    current: 'homepage',
     avatarUrl: './user-unlogin.png',
     userInfo: {},
     logged: false,
@@ -53,16 +54,21 @@ Page({
     ],
     carousel: [{
         id: 0,
-        img: '/images/psb2.jpeg',
+        img: '/images/s1.jpg',
         url: '/pages/detail/detail'
       },
       {
         id: 1,
-        img: '/images/psb.webp',
+        img: '/images/psb2.jpeg',
         url: '/pages/detail/detail'
       }
     ],
     scroll_left: 0
+  },
+  handleChange({ detail }) {
+    this.setData({
+      current: detail.key
+    });
   },
 
   onLoad: function() {

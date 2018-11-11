@@ -14,7 +14,7 @@
 
 </view>
 
-
+<!--
   <i-collapse name="{{name}}">
     <i-collapse-item wx:for="{{goods_list}}" title="{{item.status?'[已通过]':'[未过审]'}}{{item.title}}" category="电子设备" name="name1" i-class="issue_title">
       <view slot="content" >
@@ -24,3 +24,4 @@
       </view>
     </i-collapse-item>
     </i-collapse>
+-->

@@ -5,7 +5,34 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    goods_list: [{
+      id: 1,
+      title: "小风车",
+      description: "转呀转呀转",
+      pic: "/images/upload.png",
+      status: 1//active or denied
+    }, {
+      id: 2,
+      title: "大蟑螂",
+      description: "交通工具",
+      pic: "/images/upload.png",
+      status: 1
+    },
+    {
+      id: 3,
+      title: "二手书",
+      description: "流通的二手书",
+      pic: "/images/upload.png",
+      status: 1
+    },
+    {
+      id: 4,
+      title: "小黄书😼",
+      description: "小黄车使用手册",
+      pic: "/images/upload.png",
+      status: 0
+    }
+    ]
   },
 
   /**

@@ -39,6 +39,14 @@ Component({
         count: {
             type: Number,
             value: 0
+        },
+        icsize:{
+          type:Number,
+          value:22
+        },
+        scale:{
+          type:Number,
+          value:1
         }
     },
 

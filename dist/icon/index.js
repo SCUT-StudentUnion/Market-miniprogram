@@ -17,6 +17,10 @@ Component({
         color: {
             type: String,
             value: ''
+        },
+        scale:{
+          type:Number,
+          value:'1'
         }
     }
 });

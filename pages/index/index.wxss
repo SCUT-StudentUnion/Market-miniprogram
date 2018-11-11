@@ -59,3 +59,25 @@ page {
   font-size: 34rpx;
   color: #007aff;
 }
+
+.col-class{
+  background: red;
+  line-height: 90rpx;
+  padding: 20rpx;
+}
+
+.gridicon{
+  background: blue;
+  width: 100%;
+  height: 100%
+
+}
+
+.badge {
+  background: #1073ba;
+  border-radius: 15rpx;
+  color: white;
+  font-size: 22rpx;
+  padding: 10rpx;
+  margin-right: 10rpx;
+}

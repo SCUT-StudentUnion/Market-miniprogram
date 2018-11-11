@@ -1,9 +1,9 @@
 <view id="{{name}}" class="i-class i-collapse-item ">
   <view class="i-collapse-item-title-wrap" bindtap="trigger">
 
-    <text class="i-collapse-item-title i-class-title">
-  <text class="category">{{category}}</text>{{title}}</text>
-    <i-icon size="12" type="enter" i-class="{{ showContent ? 'i-collapse-item-arrow-show' : 'i-collapse-item-arrow' }}" style='float:right;padding-right:15rpx;' />
+    <view class="i-collapse-item-title i-class-title" style='display:inline-flex;'>
+  <text class="category" >{{category}}</text><i-icon type="{{icontype}}" size="24" style="margin-right: 5px" color="#80848f" /><view style=''>{{title}}</view></view><!--这里不要换行-->
+    <i-icon size="12" type="enter" i-class="{{ showContent ? 'i-collapse-item-arrow-show' : 'i-collapse-item-arrow' }}" style='display:inline-block;float:right;padding-right:15rpx;' />
   </view>
   <view class="i-collapse-item-content {{showContent}}  i-class-content">
     <slot name="content"></slot>

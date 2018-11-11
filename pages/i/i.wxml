@@ -1,40 +1,22 @@
 <!--pages/i/i.wxml-->
 <view>
-  <div style="min-height:300rpx;background:#0071bd;display:block">
+  <view style="min-height:300rpx;background:#0071bd;display:block">
     <view style='line-height:40rpx;visibility:hidden'>占位</view>
     <image class="weui-grid__icon_i" src="/images/psb2.jpeg" />
 
     <view class="weui-grid__label_i">这里是昵称</view>
-  </div>
+  </view>
 
   <view class="weui-panel__bd" style='margin-top:15rpx;margin-bottom:5rpx;'>
     <view class="weui-media-box weui-media-box_small-appmsg">
       <view class="weui-cells weui-cells_in-small-appmsg">
-        <navigator url="../issue/issue" open-type="navigate"  class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-          <view class="weui-cell__hd">
-            <image src="{{icon20}}" style="width: 20px;height: 20px;margin-right: 5px" />
-          </view>
-          <view class="weui-cell__bd ">
-           
-              <text>我的发布</text>
-         
-          </view>
-          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-        </navigator>
-      </view>
-    </view>
-  </view>
-
-
-<view class="weui-panel__bd" style='margin-top:15rpx;margin-bottom:5rpx;'>
-    <view class="weui-media-box weui-media-box_small-appmsg">
-      <view class="weui-cells weui-cells_in-small-appmsg">
         <navigator url="../issue/issue" open-type="navigate" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
           <view class="weui-cell__hd">
-            <image src="{{icon20}}" style="width: 20px;height: 20px;margin-right: 5px" />
+            <i-icon type="activity" size="24" style="margin-right: 5px" color="#80848f" />
           </view>
-          <view class="weui-cell__bd ">
-              <text>我的收藏</text>
+          <view class="weui-cell__bd " style="font-size:36rpx">
+
+            <text>我的发布</text>
 
           </view>
           <view class="weui-cell__ft weui-cell__ft_in-access"></view>
@@ -44,7 +26,37 @@
   </view>
 
 
+  <view class="weui-panel__bd" style='margin-top:15rpx;margin-bottom:5rpx;'>
+    <view class="weui-media-box weui-media-box_small-appmsg">
+      <view class="weui-cells weui-cells_in-small-appmsg">
+        <navigator url="../favorite/favorite" open-type="navigate" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__hd">
+            <i-icon type="collection" size="24" style="margin-right: 5px" color="#80848f" />
+          </view>
+          <view class="weui-cell__bd " style="font-size:36rpx">
+            <text>我的收藏</text>
 
-  <i-button type="primary" bind:click="handleClick">一个待定的button</i-button>
+          </view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </navigator>
+      </view>
+    </view>
+  </view>
 
-</view>
+  
+  <view class="weui-cells__title" style='margin-top:-15rpx;font-size:28rpx'>近期发布</view>
+
+
+    <i-collapse name="{{name}}">
+      <i-collapse-item wx:for="{{goods_list}}" title="{{item.status?'':'[未过审]'}}{{item.title}}" category="电子设备" name="name1" i-class="issue_title" icontype="{{item.status?'':'prompt'}}">
+        <view slot="content">
+          <image class="issue_img" src="{{item.pic}}" />
+          <view style='display:block'> {{item.description}}</view>
+
+        </view>
+      </i-collapse-item>
+    </i-collapse>
+
+
+
+  </view>

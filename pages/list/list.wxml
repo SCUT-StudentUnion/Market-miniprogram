@@ -13,3 +13,5 @@
   </view>
 
 </view>
+
+<i-load-more tip="没有更多商品啦" loading="{{ false }}"  i-class="loadmore"/>
