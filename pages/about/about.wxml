@@ -1,0 +1,11 @@
+<!--pages/about/about.wxml-->
+<view class="page" style='display:flex;height:100%;width:100%;position: fixed;'>
+<text style='text-align:center;color:#6e6e6e;top:30%;width:100%;position:absolute;font-size:28rpx'>
+华工集市
+Copyright© 华南理工大学学生会版权所有
+如有任何建议
+欢迎在华南理工大学学生会微信公众号后台留言反馈
+让我们共同建设更好的华工集市平台
+</text>
+
+</view>

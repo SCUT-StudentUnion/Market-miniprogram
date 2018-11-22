@@ -8,50 +8,7 @@ Page({
     logged: false,
     takeSession: false,
     requestResult: '',
-    inputShowed: false,
-    inputVal: "",
-    grids: [{
-        id: 0,
-        title: '发布二手信息',
-        url: '/pages/post/post',
-        icon: '',
-        opentype: 'switchTab'
-      },
-      {
-        id: 1,
-        title: "商品列表",
-        url: "/pages/list/list",
-        icon: '',
-        opentype: 'navigate'
-      }, {
-        id: 2,
-        title: '商品详细信息',
-        url: "/pages/detail/detail",
-        icon: '',
-        opentype: 'navigate'
-      },
-      {
-        id: 3,
-        title: '电子设备',
-        url: "/pages/detail/detail",
-        icon: '',
-        opentype: 'navigate'
-      },
-      {
-        id: 4,
-        title: '日用品',
-        url: "/pages/detail/detail",
-        icon: '',
-        opentype: 'navigate'
-      },
-      {
-        id: 4,
-        title: '二手书',
-        url: "/pages/detail/detail",
-        icon: '',
-        opentype: 'navigate'
-      }
-    ],
+    category:['全部','图书文具','寝室用品','数码电子','服装美妆','运动健身','其他'],
     carousel: [{
         id: 0,
         img: '/images/s1.jpg',
@@ -63,14 +20,43 @@ Page({
         url: '/pages/detail/detail'
       }
     ],
-    scroll_left: 0
+    scroll_left: 0,
+    goods_list: [{
+      id: 1,
+      title: "小风车",
+      description: "转呀转呀转",
+      pic: "/images/timg.jpeg",
+      place:"五山",
+      price:50
+    }, {
+      id: 2,
+      title: "大蟑螂",
+      description: "交通工具",
+        pic: "/images/psb2.jpeg",
+        place: "五山",
+        price:40
+    },
+    {
+      id: 3,
+      title: "二手书",
+      description: "流通的二手书如果我超长会怎么样呢嘿嘿会怎么样呢怎么样呢如果再长一点呢",
+      pic: "/images/d.jpg",
+      place: "大学城",
+      price:30
+    }
+    ]
   },
   handleChange({ detail }) {
     this.setData({
       current: detail.key
     });
   },
-
+  navigate:function(e){
+    console.log(e.target.dataset.id);
+    wx.navigateTo({
+      url: '/pages/detail/detail?id=' + e.target.dataset.id
+    })
+  },
   onLoad: function() {
 
     // 获取用户信息
@@ -100,26 +86,10 @@ Page({
       })
     }
   },
-  showInput: function() {
-    this.setData({
-      inputShowed: true
-    });
-  },
-  hideInput: function() {
-    this.setData({
-      inputVal: "",
-      inputShowed: false
-    });
-  },
-  clearInput: function() {
-    this.setData({
-      inputVal: ""
-    });
-  },
-  inputTyping: function(e) {
-    this.setData({
-      inputVal: e.detail.value
-    });
+  goto: function (e) {
+    wx.navigateTo({
+      url: '/pages/detail/detail'
+    })
   }
 
 })

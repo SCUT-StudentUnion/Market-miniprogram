@@ -48,3 +48,21 @@
   background: #1073ba;
   border: 1px solid #1073ba !important;
 }
+
+.pop{
+  width: 60%;
+}
+
+.placeholder{
+  
+}
+
+.MinHeight{
+  min-height: 140rpx!important;
+}
+
+.hairline--top{
+  border-top-style: solid;
+  color: #1173bc;
+
+}

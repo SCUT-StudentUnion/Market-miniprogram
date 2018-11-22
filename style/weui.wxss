@@ -312,7 +312,7 @@ icon {
 .weui-form-preview__label {
   float: left;
   margin-right: 1em;
-  min-width: 4em;
+  min-width: 2em;
   color: #999;
   text-align: justify;
   text-align-last: justify;

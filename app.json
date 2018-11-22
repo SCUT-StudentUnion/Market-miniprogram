@@ -1,15 +1,19 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/issue/issue",
+    "pages/post/post",
+    
+    "pages/detail/detail",
+    
     "pages/i/i",
     "pages/navigater/navigater",
     
-    "pages/detail/detail",
     "pages/list/list",
-    "pages/post/post",
-    "pages/issue/issue",
-    "pages/favorite/favorite"
     
+    
+    "pages/favorite/favorite",
+    "pages/about/about"
   ],
   "window": {
     "backgroundColor": "#0071BD",
@@ -33,8 +37,8 @@
         "text": "发布"
       },
       {
-        "pagePath":"pages/i/i",
-        "text":"我"
+        "pagePath": "pages/i/i",
+        "text": "我"
       }
     ],
     "color": "#cccccc",
@@ -52,15 +56,35 @@
     "i-button": "../../dist/button/index",
     "i-row": "../../dist/row/index",
     "i-col": "../../dist/col/index",
-        "i-grid": "../../dist/grid/index",
-        "i-grid-item": "../../dist/grid-item/index",
-        "i-grid-icon": "../../dist/grid-icon/index",
-        "i-grid-label": "../../dist/grid-label/index",
-        "i-alert": "../../dist/alert/index",
-        "i-icon": "../../dist/icon/index",
-        "i-load-more": "../../dist/load-more/index",
-            "i-tab-bar": "../../dist/tab-bar/index",
-            "i-tab-bar-item": "../../dist/tab-bar-item/index",
-            "i-card": "../../dist/card/index"
+    "i-grid": "../../dist/grid/index",
+    "i-grid-item": "../../dist/grid-item/index",
+    "i-grid-icon": "../../dist/grid-icon/index",
+    "i-grid-label": "../../dist/grid-label/index",
+    "i-alert": "../../dist/alert/index",
+    "i-icon": "../dist/icon/index",
+    "i-load-more": "../../dist/load-more/index",
+    "i-tab-bar": "../../dist/tab-bar/index",
+    "i-tab-bar-item": "../../dist/tab-bar-item/index",
+    "i-card": "../../dist/card/index",
+    "i-divider": "/dist/divider/index",
+    "van-button": "/changed/button/index",
+    "van-search": "/vant-weapp/search/index",
+    "van-tab": "/vant-weapp/tab/index",
+    "van-tabs": "/vant-weapp/tabs/index",
+    "van-panel": "/vant-weapp/panel/index",
+    "van-cell": "/vant-weapp/cell/index",
+    "van-cell-group": "/vant-weapp/cell-group/index",
+    "van-slider": "/vant-weapp/slider/index",
+    "van-progress": "/vant-weapp/progress/index",
+    "van-checkbox": "/vant-weapp/checkbox/index",
+    "van-checkbox-group": "/vant-weapp/checkbox-group/index",
+    "van-search": "/vant-weapp/search/index",
+    "van-tag": "/vant-weapp/tag/index",
+    "van-goods-action": "/vant-weapp/goods-action/index",
+    "van-goods-action-icon": "/vant-weapp/goods-action-icon/index",
+    "van-goods-action-button": "/vant-weapp/goods-action-button/index",
+    "van-field": "/vant-weapp/field/index",
+    "van-popup": "/vant-weapp/popup/index",
+    "van-submit-bar": "/vant-weapp/submit-bar/index"
   }
 }

@@ -9,3 +9,20 @@
   height: 100rpx;
   width: 100rpx;
 }
+
+.van-panel {
+  background: #fff;
+}
+
+.van-panel__header-value {
+  color: #1173bc;
+  font-weight:normal;
+}
+
+.van-panel__footer {
+  padding: 10px 15px;
+}
+
+.van-panel__footer2 {
+  padding: 3px 15px;
+}

@@ -60,17 +60,16 @@ page {
   color: #007aff;
 }
 
-.col-class{
+.col-class {
   background: red;
   line-height: 90rpx;
   padding: 20rpx;
 }
 
-.gridicon{
+.gridicon {
   background: blue;
   width: 100%;
-  height: 100%
-
+  height: 100%;
 }
 
 .badge {
@@ -80,4 +79,32 @@ page {
   font-size: 22rpx;
   padding: 10rpx;
   margin-right: 10rpx;
+}
+
+.mall {
+  background: #fcfcfc;
+  /*padding: 30rpx 45rpx;*/
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.van-panel {
+  background: #fff;
+}
+
+.van-panel__header-value {
+  color: #1173bc;
+  font-weight:normal;
+}
+
+.van-panel__footer {
+  padding: 10px 15px;
+}
+
+.van-panel__footer2 {
+  padding: 3px 15px;
+}
+
+.header-class{
+ 
 }
