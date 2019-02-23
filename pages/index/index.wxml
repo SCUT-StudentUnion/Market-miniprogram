@@ -2,47 +2,31 @@
   <view slot="action" bind:tap="onSearch">搜索</view>
 </van-search>
 
-
-
 <swiper indicator-dots="true" indicator-active-color='white' autoplay='true'>
-
-
-  <swiper-item wx:for='{{carousel}}'>
+  <swiper-item wx:for='{{carousel}}' wx:key="{{item.img}}">
     <image src="{{item.img}}" style='width:100%;height:100%'></image>
   </swiper-item>
-
 </swiper>
 
+<van-tabs active="{{ active }}" color="#1173bc" >
+  <van-tab wx:for="{{categories}}" wx:key="{{item.id}}" title="{{item.name}}" >
+    <view class='item' wx:for="{{goods_list}}" wx:key="{{item.id}}" bindtap="goto">
+      <view>[出售]{{item.title}}</view>
 
-<van-tabs active="{{ active }}" color="#1173bc">
-  <van-tab wx:for="{{category}}" title="{{item}}" custom-class="mall">
-    <!--<text style='width:100%'>内容 1</text>-->
-
-    <view wx:for="{{goods_list}}" class="van-panel van-hairline--top-bottom custom-class" style="width:100%;display:block;margin-bottom:35rpx;">
-      <van-cell title="{{ '[出售]'+item.title }}" label="" value="" custom-class="header-class" value-class="van-panel__header-value" bindtap="goto" />
-
-
-      <view class="van-panel__content" bindtap="goto">
-        <slot />
-        <view style='display:flex;flex-wrap:wrap;'>
-          <view class='inline' style='display:flex;justify-content:space-around;padding:25rpx 0rpx;width:100%'>
-            <image src='{{item.pic}}' style='width:200rpx;height:200rpx;'></image>
-            <image src='{{item.pic}}' style='width:200rpx;height:200rpx;'></image>
-            <image src='{{item.pic}}' style='width:200rpx;height:200rpx;'></image>
-          </view>
-          <view style="display:flex;font-size:26rpx;width:100%;color:#565455;padding:0rpx 30rpx 20rpx 30rpx;" class='van-ellipsis'>{{item.description}}</view>
-        </view>
+      <view class='photo-list'>
+        <image src='{{item.pic}}' ></image>
+        <image src='{{item.pic}}' ></image>
+        <image src='{{item.pic}}' ></image>
       </view>
+      <view>{{item.description}}</view>
 
-      <view class="van-panel__footer2 van-hairline--top footer-class" style="display:flex;justify-content:space-between;align-items:center;font-size:26rpx;color:#20262e" bindtap="goto">
-        <view style='color:#1173bc;font-size:36rpx'>¥{{item.price}}</view>
-
-
-        <view style='display:flex;align-items:center;color:#5b5a5a'>
-          <i-icon type="coordinates" size="22" />
+      <view class='item-footer'>
+        <view class='price'>¥{{item.price}}</view>
+        <view class="area">
+          <van-icon name="location" size="1.2em"/>
           <view>{{item.place}}</view>
         </view>
-        <view style='color:#ccc'>1分钟前</view>
+        <view class="time">1分钟前</view>
       </view>
     </view>
 

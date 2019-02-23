@@ -1,110 +1,38 @@
-/**index.wxss**/
-
-page {
-  background: #f6f6f6;
+.photo-list {
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-.userinfo, .uploader {
-  margin-top: 40rpx;
-  height: 140rpx;
-  width: 100%;
-  background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-left: none;
-  border-right: none;
+.photo-list image {
+  height: 240rpx;
+  width: 240rpx;
+}
+
+.item {
+  padding: 0 10px;
+  margin: 5px 0;
+  background: #fff
+}
+
+.item-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.price {
+  color:#1173bc;
+  font-size: 1.4em;
+}
+
+.area {
   display: flex;
   flex-direction: row;
   align-items: center;
-  transition: all 300ms ease;
 }
 
-.userinfo-avatar {
-  width: 100rpx;
-  height: 100rpx;
-  margin: 20rpx;
-  border-radius: 50%;
-  background-size: cover;
-  background-color: white;
-}
-
-.userinfo-avatar:after {
-  border: none;
-}
-
-.userinfo-nickname {
-  font-size: 32rpx;
-  color: #007aff;
-  background-color: white;
-  background-size: cover;
-}
-
-.userinfo-nickname::after {
-  border: none;
-}
-
-.uploader {
-  height: auto;
-  padding: 0 0 0 0rpx;
-  flex-direction: column;
-  align-items: flex-start;
-  box-sizing: border-box;
-}
-
-.uploader-text {
-  width: 100%;
-  line-height: 52px;
-  font-size: 34rpx;
-  color: #007aff;
-}
-
-.col-class {
-  background: red;
-  line-height: 90rpx;
-  padding: 20rpx;
-}
-
-.gridicon {
-  background: blue;
-  width: 100%;
-  height: 100%;
-}
-
-.badge {
-  background: #1073ba;
-  border-radius: 15rpx;
-  color: white;
-  font-size: 22rpx;
-  padding: 10rpx;
-  margin-right: 10rpx;
-}
-
-.mall {
-  background: #fcfcfc;
-  /*padding: 30rpx 45rpx;*/
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.van-panel {
-  background: #fff;
-}
-
-.van-panel__header-value {
-  color: #1173bc;
-  font-weight:normal;
-}
-
-.van-panel__footer {
-  padding: 10px 15px;
-}
-
-.van-panel__footer2 {
-  padding: 3px 15px;
-}
-
-.header-class{
- 
+.time {
+  color: #ccc;
 }

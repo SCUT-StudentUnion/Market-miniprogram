@@ -68,7 +68,7 @@
     "i-card": "../../dist/card/index",
     "i-divider": "/dist/divider/index",
     "van-button": "/changed/button/index",
-    "van-search": "/vant-weapp/search/index",
+    "van-icon": "/vant-weapp/icon/index",
     "van-tab": "/vant-weapp/tab/index",
     "van-tabs": "/vant-weapp/tabs/index",
     "van-panel": "/vant-weapp/panel/index",
