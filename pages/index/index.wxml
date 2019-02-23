@@ -8,27 +8,24 @@
   </swiper-item>
 </swiper>
 
-<van-tabs active="{{ active }}" color="#1173bc" >
-  <van-tab wx:for="{{categories}}" wx:key="{{item.id}}" title="{{item.name}}" >
-    <view class='item' wx:for="{{goods_list}}" wx:key="{{item.id}}" bindtap="goto">
-      <view>[出售]{{item.title}}</view>
-
-      <view class='photo-list'>
-        <image src='{{item.pic}}' ></image>
-        <image src='{{item.pic}}' ></image>
-        <image src='{{item.pic}}' ></image>
-      </view>
-      <view>{{item.description}}</view>
-
-      <view class='item-footer'>
-        <view class='price'>¥{{item.price}}</view>
-        <view class="area">
-          <van-icon name="location" size="1.2em"/>
-          <view>{{item.place}}</view>
-        </view>
-        <view class="time">1分钟前</view>
-      </view>
-    </view>
-
-  </van-tab>
+<van-tabs active="{{ active }}" color="#1173bc" bind:change="tabChange">
+  <van-tab wx:for="{{categories}}" wx:key="{{item.id}}" title="{{item.name}}" />
 </van-tabs>
+
+<view class='item' wx:for="{{goodsList}}" wx:key="{{item.id}}" bindtap="goto">
+  <view>[{{i18n.sellOrBuy[item.currentDescription.active]}}] {{item.currentDescription.title}}</view>
+
+  <view class='photo-list' wx:for="{{item.currentDescription.photos}}" wx:for-item="p" wx:key="p.id">
+    <image src='{{p.url}}' ></image>
+  </view>
+  <view>{{item.currentDescription.detail}}</view>
+
+  <view class='item-footer'>
+    <view class='price'>¥{{item.currentDescription.sellingPrice}}</view>
+    <view class="area">
+      <van-icon name="location" size="1.2em"/>
+      <view>{{i18n.area[item.currentDescription.area]}}</view>
+    </view>
+    <view class="time">1分钟前</view>
+  </view>
+</view>

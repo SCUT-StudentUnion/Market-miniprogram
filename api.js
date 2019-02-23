@@ -1,4 +1,5 @@
-const baseUri = "http://localhost:8080";
+const baseUri = "https://market-staging.huww98.cn/api";
+// const baseUri = "http://localhost:8080";
 
 const ErrorCode = {
   InvalidJwt: 'invalid-jwt',
@@ -95,4 +96,8 @@ export function hasLogedIn() {
 
 export function getAllCategories() {
   return getApi("/categories");
+}
+
+export function getAllGoodsInCategory(categoryId) {
+  return getApi(`/categories/${categoryId}/goods`);
 }
