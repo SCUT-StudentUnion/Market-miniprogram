@@ -1,5 +1,7 @@
+<div class="column">
+<scroll-view scroll-y style='height:calc(100% - 47px)'>
 <van-cell-group>
-  <van-cell data-name="{{ item }}" style="display:inline-flex;width:100%">
+  <van-cell data-name="{{ item }}" style="display:inline-flex;width:100%;">
     <view slot="title" style="display:flex;justify-content:space-around">
       <van-checkbox-group value="{{ result }}" bind:change="onChange" style="display:inline-flex;justify-content:space-around;flex-basis:60%" max="2">
         <van-checkbox wx:for="{{ list }}" wx:key="{{ index }}" name="{{ item }}">
@@ -58,9 +60,9 @@
     <van-cell title="战术核弹" clickable />
   </van-cell-group>
 </van-popup>
+</scroll-view>
 
-
-  <van-goods-action style="display:flex;justify-content:space-around;background:#fff" class="">
+  <van-goods-action style="display:flex;justify-content:space-around;background:#fff;height:47px" class="">
     <view  style='width:20%;background:#fff' class="hairline--top" ></view>
     <!--<van-goods-action-icon icon="cart" text="购物车" bind:click="onClickIcon" />
   <van-button
@@ -70,7 +72,7 @@
     style='width:50%'
     square
 >收藏</van-button>-->
-    <van-button type="share" bind:click="onClickButton" size="long" class="hairline--top"  style="display:flex;justify-content:space-around;flex-grow:1;background:#fff;min-height:105rpx;align-items:center;" >确认提交</van-button>
+    <van-button type="share" bind:click="onClickButton" size="long" class="hairline--top"  style="display:flex;justify-content:space-around;flex-grow:1;background:#fff;align-items:center;" >确认提交</van-button>
     <view  style='width:20%;background:#fff' class="hairline--top"></view>
   </van-goods-action>
 
@@ -145,3 +147,4 @@
   </view>
 </view>
 -->
+</div>

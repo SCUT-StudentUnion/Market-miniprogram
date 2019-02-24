@@ -64,5 +64,15 @@
 .hairline--top{
   border-top-style: solid;
   color: #1173bc;
+height: 100%!important
+}
 
+.column{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+page{
+  height: 100%
 }
