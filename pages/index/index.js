@@ -1,5 +1,7 @@
-import { getAllCategories, getAllGoodsInCategory } from "../../api.js";
+import { getAllGoodsInCategory } from "../../api.js";
 import { area, sellOrBuy } from "../../i18n.js";
+
+const app = getApp();
 
 Page({
   data: {
@@ -28,7 +30,7 @@ Page({
     this.loadGoods();
   },
   onLoad() {
-    getAllCategories()
+    app.globalData.allCategoriesPromise
       .then(categories => this.setData({categories}))
       .then(this.loadGoods);
   },

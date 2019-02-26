@@ -1,0 +1,4 @@
+<van-cell-group>
+  <van-cell clickable wx:for="{{categories}}" wx:key="{{item.id}}"
+    data-category="{{item}}" title="{{item.name}}" bind:click="onCategorySelected" />
+</van-cell-group>

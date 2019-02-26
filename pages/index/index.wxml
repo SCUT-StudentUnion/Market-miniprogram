@@ -8,7 +8,7 @@
   </swiper-item>
 </swiper>
 
-<van-tabs active="{{ active }}" color="#1173bc" bind:change="tabChange">
+<van-tabs active="{{active}}" color="#1173bc" bind:change="tabChange">
   <van-tab wx:for="{{categories}}" wx:key="{{item.id}}" title="{{item.name}}" />
 </van-tabs>
 
@@ -16,14 +16,14 @@
   <view>[{{i18n.sellOrBuy[item.currentDescription.active]}}] {{item.currentDescription.title}}</view>
 
   <view class='photo-list' wx:for="{{item.currentDescription.photos}}" wx:for-item="p" wx:key="p.id">
-    <image src='{{p.url}}' ></image>
+    <image src='{{p.url}}'></image>
   </view>
   <view>{{item.currentDescription.detail}}</view>
 
   <view class='item-footer'>
     <view class='price'>¥{{item.currentDescription.sellingPrice}}</view>
     <view class="area">
-      <van-icon name="location" size="1.2em"/>
+      <van-icon name="location" size="1.2em" />
       <view>{{i18n.area[item.currentDescription.area]}}</view>
     </view>
     <view class="time">1分钟前</view>
