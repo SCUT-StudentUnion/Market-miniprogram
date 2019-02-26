@@ -16,7 +16,7 @@
   <van-cell title="图片" />
   <van-cell>
     <view class='photo-list'>
-      <image wx:for="{{localPhotos}}" wx:key="{{item}}" src='{{item}}' mode='aspectFill' data-src='{{item}}' bindtap='onDeleteImage' />
+      <image wx:for="{{localPhotos}}" wx:key="{{item.path}}" src='{{item.path}}' mode='aspectFill' data-photo='{{item}}' bindtap='onDeleteImage' />
       <image wx:if="{{localPhotos.length < maxPhotoCount}}" src='/images/upload.png' mode='aspectFill' bindtap='onSelectImage' />
     </view>
   </van-cell>

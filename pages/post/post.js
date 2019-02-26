@@ -1,4 +1,5 @@
 import { area, sellOrBuy } from "../../i18n.js";
+import { uploadFile, createGoods } from "../../api.js"
 
 Page({
   data: {
@@ -30,20 +31,21 @@ Page({
     wx.chooseImage({
       count: this.data.maxPhotoCount - this.data.localPhotos.length,
       success: res => {
+        const newPhotos = res.tempFilePaths.map(path => ({ path }));
         this.setData({
-          localPhotos: this.data.localPhotos.concat(res.tempFilePaths)
+          localPhotos: this.data.localPhotos.concat(newPhotos)
         });
       }
     });
   },
   onDeleteImage({ currentTarget }) {
-    const src = currentTarget.dataset.src;
+    const photo = currentTarget.dataset.photo;
     wx.showModal({
       title: '要删除该图片吗？',
       success: res => {
         if (res.confirm) {
           this.setData({
-            localPhotos: this.data.localPhotos.filter(s => s != src)
+            localPhotos: this.data.localPhotos.filter(p => p != photo)
           });
         }
       }
@@ -56,10 +58,43 @@ Page({
     });
   },
   onSubmit(e) {
-    wx.showModal({
-      title: '提交成功',
-      content: '校会工作人员将为您尽快审核',
-      showCancel: false
-    })
+    let uploadedCount = 0;
+    const uploadPromises = []
+    const updateLoading = () => {
+      wx.showLoading({
+        title: `上传图片(${uploadedCount}/${this.data.localPhotos.length})`,
+        mask: true
+      });
+    }
+    updateLoading();
+    for (const localPhoto of this.data.localPhotos) {
+      const promise = uploadFile(localPhoto.path)
+        .then(res => {
+          localPhoto.remoteId = res.photoId;
+          uploadedCount++;
+          updateLoading();
+        });
+      uploadPromises.push(promise);
+    }
+    Promise.all(uploadPromises)
+      .then(() => {
+        this.setData({
+          'description.photos': this.data.localPhotos.map(p => ({id: p.remoteId}))
+        });
+        return createGoods(this.data.description);
+      }).then(() => {
+        wx.hideLoading();
+        wx.showModal({
+          title: '提交成功',
+          content: '校会工作人员将为您尽快审核',
+          showCancel: false
+        })
+      }).catch(e => {
+        wx.hideLoading();
+        wx.showToast({
+          title: '发布失败:' + e,
+          icon: 'none'
+        })
+      });
   }
 })

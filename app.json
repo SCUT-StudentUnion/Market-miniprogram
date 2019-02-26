@@ -42,9 +42,9 @@
     "selectedColor": "#00b26a"
   },
   "networkTimeout": {
-    "request": 10000,
+    "request": 20000,
     "connectSocket": 10000,
-    "uploadFile": 10000,
+    "uploadFile": 60000,
     "downloadFile": 10000
   },
   "usingComponents": {

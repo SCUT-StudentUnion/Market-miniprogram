@@ -24,6 +24,10 @@ function readApiResponse(response) {
   return json;
 }
 
+function buildUri(path) {
+  return baseUri + path;
+}
+
 function callApi(path, query, init) {
   const builtInit = init || {};
   const jwt = getJwt();
@@ -33,7 +37,7 @@ function callApi(path, query, init) {
       ...builtInit.header
     }
   }
-  let builtUri = baseUri + path;
+  let builtUri = buildUri(path);
   if (query) {
     const params = new URLSearchParams(query);
     builtUri += "?" + params;
@@ -100,4 +104,22 @@ export function getAllCategories() {
 
 export function getAllGoodsInCategory(categoryId) {
   return getApi(`/categories/${categoryId}/goods`);
+}
+
+export function uploadFile(localPath) {
+  const uri = buildUri('/wechat/uploadfile');
+  return new Promise((resolve, reject) => wx.uploadFile({
+    url: uri,
+    filePath: localPath,
+    name: 'file',
+    success: resolve,
+    fail: reject
+  })).then(res => {
+    res.data = JSON.parse(res.data)
+    return readApiResponse(res);
+  });
+}
+
+export function createGoods(goodsDescription) {
+  return postApi('/goods', goodsDescription);
 }
