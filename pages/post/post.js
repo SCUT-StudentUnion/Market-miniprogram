@@ -2,6 +2,8 @@ import { area, sellOrBuy } from "../../i18n.js";
 
 Page({
   data: {
+    maxPhotoCount: 9,
+    localPhotos: [],
     i18n: {
       area,
       sellOrBuy,
@@ -26,10 +28,10 @@ Page({
   },
   onSelectImage() {
     wx.chooseImage({
-      count: 9,
+      count: this.data.maxPhotoCount - this.data.localPhotos.length,
       success: res => {
         this.setData({
-          localPhotos: res.tempFilePaths
+          localPhotos: this.data.localPhotos.concat(res.tempFilePaths)
         });
       }
     });
@@ -53,7 +55,7 @@ Page({
       [fieldName]: detail
     });
   },
-  onClickButton(e) {
+  onSubmit(e) {
     wx.showModal({
       title: '提交成功',
       content: '校会工作人员将为您尽快审核',

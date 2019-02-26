@@ -16,8 +16,8 @@
   <van-cell title="图片" />
   <van-cell>
     <view class='photo-list'>
-      <image src='/images/upload.png' mode='aspectFill' bindtap='onSelectImage' />
-      <image wx:for="{{localPhotos}}" src='{{item}}' mode='aspectFill' data-src='{{item}}' bindtap='onDeleteImage' />
+      <image wx:for="{{localPhotos}}" wx:key="{{item}}" src='{{item}}' mode='aspectFill' data-src='{{item}}' bindtap='onDeleteImage' />
+      <image wx:if="{{localPhotos.length < maxPhotoCount}}" src='/images/upload.png' mode='aspectFill' bindtap='onSelectImage' />
     </view>
   </van-cell>
 
@@ -36,7 +36,7 @@
 </van-cell-group>
 
 <cover-view class='submit'>
-  <button type='primary' bind:click="onSubmit">
-    确认提交
+  <button type='primary' bindtap="onSubmit">
+    提交审核
   </button>
 </cover-view>
