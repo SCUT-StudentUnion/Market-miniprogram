@@ -45,7 +45,7 @@ Page({
       success: res => {
         if (res.confirm) {
           this.setData({
-            localPhotos: this.data.localPhotos.filter(p => p != photo)
+            localPhotos: this.data.localPhotos.filter(p => p.path != photo.path)
           });
         }
       }
@@ -59,7 +59,6 @@ Page({
   },
   onSubmit(e) {
     let uploadedCount = 0;
-    const uploadPromises = []
     const updateLoading = () => {
       wx.showLoading({
         title: `上传图片(${uploadedCount}/${this.data.localPhotos.length})`,
@@ -67,16 +66,23 @@ Page({
       });
     }
     updateLoading();
+    let uploadPromise = Promise.resolve();
     for (const localPhoto of this.data.localPhotos) {
-      const promise = uploadFile(localPhoto.path)
+      if (localPhoto.remoteId) {
+        // already uploaded
+        uploadedCount++;
+        updateLoading();
+        continue; 
+      }
+      uploadPromise = uploadPromise
+        .then(() => uploadFile(localPhoto.path))
         .then(res => {
           localPhoto.remoteId = res.photoId;
           uploadedCount++;
           updateLoading();
         });
-      uploadPromises.push(promise);
     }
-    Promise.all(uploadPromises)
+    uploadPromise
       .then(() => {
         this.setData({
           'description.photos': this.data.localPhotos.map(p => ({id: p.remoteId}))

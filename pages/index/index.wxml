@@ -15,8 +15,8 @@
 <view class='item' wx:for="{{goodsList}}" wx:key="{{item.id}}" bindtap="goto">
   <view>[{{i18n.sellOrBuy[item.currentDescription.active]}}] {{item.currentDescription.title}}</view>
 
-  <view class='photo-list' wx:for="{{item.currentDescription.photos}}" wx:for-item="p" wx:key="p.id">
-    <image src='{{p.url}}'></image>
+  <view class='photo-list'>
+    <image mode='aspectFill' wx:for="{{item.currentDescription.photosInList}}" wx:for-item="p" wx:key="p.id" src='{{p.url}}'></image>
   </view>
   <view>{{item.currentDescription.detail}}</view>
 

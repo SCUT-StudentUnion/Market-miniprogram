@@ -1,12 +1,12 @@
 .photo-list {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
 }
 
 .photo-list image {
-  height: 240rpx;
-  width: 240rpx;
+  margin: 1px;
+  height: 230rpx;
+  width: 230rpx;
 }
 
 .item {

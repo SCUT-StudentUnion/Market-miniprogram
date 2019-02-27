@@ -23,7 +23,14 @@ Page({
   loadGoods() {
     const category = this.data.categories[this.data.active];
     getAllGoodsInCategory(category.id)
-      .then(({ content }) => this.setData({ goodsList: content }));
+      .then(({ content }) =>{
+        content.forEach(g => {
+          g.currentDescription.photosInList = g.currentDescription.photos.slice(0,3);
+        });
+        this.setData({
+          goodsList: content
+        });
+      });
   },
   tabChange({ detail }) {
     this.setData({active: detail.index});

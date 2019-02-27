@@ -28,24 +28,16 @@ function buildUri(path) {
   return baseUri + path;
 }
 
-function callApi(path, query, init) {
-  const builtInit = init || {};
-  const jwt = getJwt();
-  if (jwt) {
-    builtInit.header = {
-      "Authorization": "Bearer " + jwt,
-      ...builtInit.header
-    }
-  }
+function callApi(path, init) {
   let builtUri = buildUri(path);
-  if (query) {
-    const params = new URLSearchParams(query);
+  if (init && init.query) {
+    const params = new URLSearchParams(init.query);
     builtUri += "?" + params;
+    delete init.query;
   }
-  builtInit.url = builtUri;
   return new Promise((resolve, reject) => {
     wx.request({
-      ...builtInit,
+      ...init,
       url: builtUri,
       success: resolve,
       fail: reject
@@ -53,20 +45,59 @@ function callApi(path, query, init) {
   }).then(readApiResponse);
 }
 
-function getApi(path, query, init) {
-  return callApi(path, query, {
-    method: 'GET',
-    ...init
-  })
+function callApiWithAuthorization(path, init) {
+  const doCallApi = (jwt) => {
+    const builtInit = init || {};
+    builtInit.header = {
+      "Authorization": "Bearer " + jwt,
+      ...builtInit.header
+    }
+    return callApi(path, builtInit);
+  }
+  const loginAndCallApi = () => {
+    return login().then(() => {
+      doCallApi(getJwt())
+    });
+  }
+  const jwt = getJwt();
+  let callApiPromise;
+  if(jwt) {
+    return doCallApi(jwt).catch(e => {
+      if (e.errorCode == "invalid-jwt") {
+        logout();
+        return loginAndCallApi()
+      }
+      throw e;
+    });
+  } else {
+    return loginAndCallApi();
+  }
 }
 
-function postApi(path, body, query, init) {
+function callApiWarpper(path, init) {
+  if (init && init.withAuthorization) {
+    delete init.withAuthorization;
+    return callApiWithAuthorization(path, init);
+  } else {
+    return callApi(path, init);
+  }
+}
+
+function getApi(path, init) {
+  const builtInit = {
+    method: 'GET',
+    ...init
+  }
+  return callApiWarpper(path, builtInit);
+}
+
+function postApi(path, body, init) {
   const builtInit = {
     method: 'POST',
     data: body,
     ...init
   };
-  return callApi(path, query, builtInit);
+  return callApiWarpper(path, builtInit);
 }
 
 const jwtStorageKey = "JWT";
@@ -74,8 +105,13 @@ export function getJwt() {
   return wx.getStorageSync(jwtStorageKey);
 }
 
+let loginPromise = null;
+
 export function login() {
-  return new Promise((resolve, reject) => {
+  if (loginPromise != null) {
+    return loginPromise;
+  }
+  loginPromise = new Promise((resolve, reject) => {
     wx.login({
       success(res) {
         if (res.code) {
@@ -87,7 +123,11 @@ export function login() {
       fail: reject
     })
   }).then(code => postApi("/wechat/login", { code }))
-  .then(result => wx.setStorageSync(jwtStorageKey, result.jwt));
+  .then(result =>{
+    wx.setStorageSync(jwtStorageKey, result.jwt);
+    loginPromise = null;
+  });
+  return loginPromise;
 }
 
 export function logout() {
@@ -121,5 +161,5 @@ export function uploadFile(localPath) {
 }
 
 export function createGoods(goodsDescription) {
-  return postApi('/goods', goodsDescription);
+  return postApi('/goods', goodsDescription, { withAuthorization: true });
 }
