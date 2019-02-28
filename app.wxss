@@ -1,6 +1,5 @@
-@import "style/weui.wxss";
-@import "style/index.wxss";
-@import "miniprogram_npm/vant-weapp/button/index.wxss";
+@import "miniprogram_npm/vant-weapp/common/index.wxss";
+
 .container {
   display: flex;
   flex-direction: column;
@@ -13,4 +12,3 @@ page {
   font-size: 16px;
   font-family: -apple-system-font, Helvetica Neue, Helvetica, sans-serif;
 }
-
