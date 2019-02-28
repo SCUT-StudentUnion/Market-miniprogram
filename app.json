@@ -5,8 +5,7 @@
     "pages/post/post",
     "pages/detail/detail",
     "pages/i/i",
-    "pages/navigater/navigater",
-    "pages/list/list",
+    "pages/navigator/navigator",
     "pages/favorite/favorite",
     "pages/about/about",
     "pages/post/selectCategory",
@@ -22,7 +21,7 @@
   "tabBar": {
     "list": [
       {
-        "pagePath": "pages/navigater/navigater",
+        "pagePath": "pages/navigator/navigator",
         "text": "开发版页面"
       },
       {
@@ -48,22 +47,6 @@
     "downloadFile": 10000
   },
   "usingComponents": {
-    "i-collapse": "dist/collapse/index",
-    "i-collapse-item": "dist/collapse-item/index",
-    "i-button": "../../dist/button/index",
-    "i-row": "../../dist/row/index",
-    "i-col": "../../dist/col/index",
-    "i-grid": "../../dist/grid/index",
-    "i-grid-item": "../../dist/grid-item/index",
-    "i-grid-icon": "../../dist/grid-icon/index",
-    "i-grid-label": "../../dist/grid-label/index",
-    "i-alert": "../../dist/alert/index",
-    "i-icon": "../dist/icon/index",
-    "i-load-more": "../../dist/load-more/index",
-    "i-tab-bar": "../../dist/tab-bar/index",
-    "i-tab-bar-item": "../../dist/tab-bar-item/index",
-    "i-card": "../../dist/card/index",
-    "i-divider": "/dist/divider/index",
     "van-button": "/vant-weapp/button/index",
     "van-icon": "/vant-weapp/icon/index",
     "van-tab": "/vant-weapp/tab/index",
@@ -80,7 +63,6 @@
     "van-search": "/vant-weapp/search/index",
     "van-tag": "/vant-weapp/tag/index",
     "van-field": "/vant-weapp/field/index",
-    "van-popup": "/vant-weapp/popup/index",
-    "van-submit-bar": "/vant-weapp/submit-bar/index"
+    "van-popup": "/vant-weapp/popup/index"
   }
 }

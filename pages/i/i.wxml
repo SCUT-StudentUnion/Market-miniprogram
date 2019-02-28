@@ -1,67 +1,10 @@
-<!--pages/i/i.wxml-->
-<view>
-  <view style="min-height:300rpx;background:#0071bd;display:block">
-    <view style='line-height:40rpx;visibility:hidden'>占位</view>
-    <image class="weui-grid__icon_i" src="/images/psb2.jpeg" />
+<view class="header">
+  <open-data type="userAvatarUrl" class="avatar" />
+  <open-data type="userNickName" class="nick-name" />
+</view>
 
-    <view class="weui-grid__label_i">这里是昵称</view>
-  </view>
-
-  <view class="weui-panel__bd" style='margin-top:15rpx;margin-bottom:5rpx;'>
-    <view class="weui-media-box weui-media-box_small-appmsg">
-      <view class="weui-cells weui-cells_in-small-appmsg">
-        <navigator url="../issue/issue" open-type="navigate" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-          <view class="weui-cell__hd">
-            <i-icon type="activity" size="24" style="margin-right: 5px" color="#80848f" />
-          </view>
-          <view class="weui-cell__bd " style="font-size:32rpx">
-
-            <text>我的发布</text>
-
-          </view>
-          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-        </navigator>
-      </view>
-    </view>
-  </view>
-
-
-  <view class="weui-panel__bd" style='margin-top:15rpx;margin-bottom:5rpx;'>
-    <view class="weui-media-box weui-media-box_small-appmsg">
-      <view class="weui-cells weui-cells_in-small-appmsg">
-        <navigator url="../favorite/favorite" open-type="navigate" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-          <view class="weui-cell__hd">
-            <i-icon type="collection" size="24" style="margin-right: 5px" color="#80848f" />
-          </view>
-          <view class="weui-cell__bd " style="font-size:32rpx">
-            <text>我的收藏</text>
-
-          </view>
-          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-        </navigator>
-      </view>
-    </view>
-  </view>
-
-  <view class="weui-panel__bd" style='margin-top:15rpx;margin-bottom:5rpx;'>
-    <view class="weui-media-box weui-media-box_small-appmsg">
-      <view class="weui-cells weui-cells_in-small-appmsg">
-        <navigator url="../about/about" open-type="navigate" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-          <view class="weui-cell__hd">
-            <i-icon type="emoji" size="24" style="margin-right: 5px" color="#80848f" />
-          </view>
-          <view class="weui-cell__bd " style="font-size:32rpx">
-            <text>关于我们</text>
-
-          </view>
-          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-        </navigator>
-      </view>
-    </view>
-  </view>
-
-<!--<image src='/images/s.jpg' style='width:100%;position:absolute;bottom:0;'></image>-->  
-
-
-
-  </view>
+<van-cell-group>
+  <van-cell is-link title="我的发布" url="../issue/issue"/>
+  <van-cell is-link title="我的收藏" url="../favorite/favorite"/>
+  <van-cell is-link title="关于我们" url="../about/about"/>
+</van-cell-group>

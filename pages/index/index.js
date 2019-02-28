@@ -1,13 +1,9 @@
 import { getAllGoodsInCategory } from "../../api.js";
-import { area, sellOrBuy } from "../../i18n.js";
 
 const app = getApp();
 
 Page({
   data: {
-    i18n: {
-      area, sellOrBuy
-    },
     active: 0,
     carousel: [{
       id: 0,
