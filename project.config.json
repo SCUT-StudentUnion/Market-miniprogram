@@ -9,7 +9,7 @@
 	},
 	"appid": "wx2d51bf22a78c11f6",
 	"projectname": "Market-miniprogram",
-	"libVersion": "2.2.5",
+	"libVersion": "2.6.1",
 	"compileType": "miniprogram",
 	"condition": {
 		"search": {

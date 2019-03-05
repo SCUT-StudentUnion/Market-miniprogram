@@ -1,42 +1,39 @@
-<van-cell-group>
-  <van-cell>
-    <van-radio-group class="active-select" value="{{description.active}}"
-      data-field-name="active" bind:change="onFieldChange">
-      <van-radio wx:for="{{sellOrBuy}}" wx:key="{{item}}" name="{{item}}">
-        {{i18n.sellOrBuy[item]}}
-      </van-radio>
-    </van-radio-group>
-  </van-cell>
+<form report-submit bindsubmit='onSubmit'>
+  <van-cell-group>
+    <van-cell>
+      <van-radio-group class="active-select" value="{{description.active}}"
+        data-field-name="active" bind:change="onFieldChange">
+        <van-radio wx:for="{{sellOrBuy}}" wx:key="{{item}}" name="{{item}}">
+          {{i18n.sellOrBuy[item]}}
+        </van-radio>
+      </van-radio-group>
+    </van-cell>
 
-  <van-field value="{{ description.title }}" label="标题" placeholder="给你的商品起个好名字吧"
-    data-field-name="title" bind:change="onFieldChange" />
+    <van-field value="{{ description.title }}" label="标题" placeholder="给你的商品起个好名字吧" name="title" />
 
-  <van-cell title="分类" value="{{ description.category.name }}" is-link bind:click='selectCategory' />
+    <van-cell title="分类" value="{{ description.category.name }}" is-link bind:click='selectCategory' />
 
-  <van-cell title="图片" />
-  <van-cell>
-    <view class='photo-list'>
-      <image wx:for="{{localPhotos}}" wx:key="{{item.path}}" src='{{item.path}}' mode='aspectFill' data-photo='{{item}}' bindtap='onDeleteImage' />
-      <image wx:if="{{localPhotos.length < maxPhotoCount}}" src='/images/upload.png' mode='aspectFill' bindtap='onSelectImage' />
-    </view>
-  </van-cell>
+    <van-cell title="图片" />
+    <van-cell>
+      <view class='photo-list'>
+        <image wx:for="{{localPhotos}}" wx:key="{{item.path}}" src='{{item.path}}' mode='aspectFill' data-photo='{{item}}' bindtap='onDeleteImage' />
+        <image wx:if="{{localPhotos.length < maxPhotoCount}}" src='/images/upload.png' mode='aspectFill' bindtap='onSelectImage' />
+      </view>
+    </van-cell>
 
-  <van-cell title="所在校区" value="{{i18n.area[description.area]}}" is-link bind:click='selectArea' />
+    <van-cell title="所在校区" value="{{i18n.area[description.area]}}" is-link bind:click='selectArea' />
 
-  <van-cell title="商品描述" />
-  <van-field value="{{ description.detail }}" input-class="description-input" type="textarea" placeholder="多些描述，别人更加了解你的商品" autosize
-    data-field-name="detail" bind:change="onFieldChange" />
+    <van-cell title="商品描述" />
+    <van-field value="{{ description.detail }}" input-class="description-input" type="textarea" placeholder="多些描述，别人更加了解你的商品" autosize name="detail" />
 
-  <van-field value="{{ description.buyingPrice }}" label="买入价" placeholder="你买入该商品的价格"
-    data-field-name="buyingPrice" bind:change="onFieldChange" />
-  <van-field value="{{ description.sellingPrice }}" label="价格" placeholder="给一个合适的价格吧"
-    data-field-name="sellingPrice" bind:change="onFieldChange" />
-  <van-field value="{{ description.contactInfo }}" label="联系方式" placeholder="方便你进一步沟通，支付价款"
-    data-field-name="contactInfo" bind:change="onFieldChange" />
-</van-cell-group>
+    <van-field value="{{ description.buyingPrice }}" label="买入价" placeholder="你买入该商品的价格" name="buyingPrice" />
+    <van-field value="{{ description.sellingPrice }}" label="价格" placeholder="给一个合适的价格吧" name="sellingPrice" />
+    <van-field value="{{ description.contactInfo }}" label="联系方式" placeholder="方便你进一步沟通，支付价款" name="contactInfo" />
+  </van-cell-group>
 
-<cover-view class='submit'>
-  <button type='primary' bindtap="onSubmit">
-    提交审核
-  </button>
-</cover-view>
+  <cover-view class='submit'>
+    <button type='primary' form-type='submit'>
+      提交审核
+    </button>
+  </cover-view>
+</form>

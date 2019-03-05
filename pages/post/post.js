@@ -58,6 +58,18 @@ Page({
     });
   },
   onSubmit(e) {
+    const value = e.detail.value;
+    for (const k of Object.keys(sellOrBuy)) {
+      delete value[k];
+    }
+    this.setData({
+      description: {
+        ...this.data.description,
+        ...value,
+        weChatFormId: e.detail.formId
+      }
+    })
+
     let uploadedCount = 0;
     const updateLoading = () => {
       wx.showLoading({
