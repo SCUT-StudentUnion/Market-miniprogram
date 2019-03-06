@@ -1,6 +1,10 @@
 import { area, sellOrBuy } from "../../i18n.js";
 import { uploadFile, createGoods } from "../../api.js"
 
+const descriptionDefaults = {
+  active: 'sell'
+};
+
 Page({
   data: {
     maxPhotoCount: 9,
@@ -10,7 +14,7 @@ Page({
       sellOrBuy,
     },
     description: {
-      active: 'sell'
+      ...descriptionDefaults
     },
     sellOrBuy: Object.keys(sellOrBuy),
     area: Object.keys(area)
@@ -107,6 +111,12 @@ Page({
           content: '校会工作人员将为您尽快审核',
           showCancel: false
         })
+        this.setData({
+          description: {
+            ...descriptionDefaults
+          },
+          localPhotos: []
+        });
       }).catch(e => {
         wx.hideLoading();
         wx.showToast({
