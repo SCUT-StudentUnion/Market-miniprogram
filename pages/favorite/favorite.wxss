@@ -1,16 +1,16 @@
-.van-panel {
-  background: #fff;
+.delete-btn {
+  width: 65px;
+  height: 100%;
+  background: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.van-panel__header-value {
-  color: #1173bc;
-  font-weight:normal;
-}
-
-.van-panel__footer {
-  padding: 10px 15px;
-}
-
-.van-panel__footer2 {
-  padding: 3px 15px;
+.no-item {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

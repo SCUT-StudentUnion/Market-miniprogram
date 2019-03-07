@@ -94,9 +94,11 @@ function getApi(path, init) {
 function postApi(path, body, init) {
   const builtInit = {
     method: 'POST',
-    data: body,
     ...init
   };
+  if(body) {
+    builtInit.data = body;
+  }
   return callApiWarpper(path, builtInit);
 }
 
@@ -162,4 +164,12 @@ export function uploadFile(localPath) {
 
 export function createGoods(goodsDescription) {
   return postApi('/goods', goodsDescription, { withAuthorization: true });
+}
+
+export function getAllFavorite() {
+  return getApi('/goods/favorite', { withAuthorization: true });
+}
+
+export function deleteFromFavorite(goodsId) {
+  return postApi(`/goods/${goodsId}/deleteFromFavorite`, null, { withAuthorization: true });
 }

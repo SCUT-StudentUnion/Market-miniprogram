@@ -20,9 +20,6 @@ Page({
     const category = this.data.categories[this.data.active];
     getAllGoodsInCategory(category.id)
       .then(({ content }) =>{
-        content.forEach(g => {
-          g.currentDescription.photosInList = g.currentDescription.photos.slice(0,3);
-        });
         this.setData({
           goodsList: content
         });

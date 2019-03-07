@@ -63,6 +63,7 @@
     "van-search": "vant-weapp/search",
     "van-tag": "vant-weapp/tag",
     "van-field": "vant-weapp/field",
-    "van-popup": "vant-weapp/popup"
+    "van-popup": "vant-weapp/popup",
+    "van-swipe-cell": "vant-weapp/swipe-cell"
   }
 }

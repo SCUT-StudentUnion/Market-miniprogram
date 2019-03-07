@@ -12,4 +12,4 @@
   <van-tab wx:for="{{categories}}" wx:key="{{item.id}}" title="{{item.name}}" />
 </van-tabs>
 
-<selling-goods-list goods-list="{{goodsList}}"/>
+<selling-goods wx:for="{{goodsList}}" wx:key="{{item.id}}" goods="{{item}}"/>
