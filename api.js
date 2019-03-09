@@ -1,5 +1,5 @@
-// const baseUri = "https://market-staging.huww98.cn/api";
-const baseUri = "http://localhost:8080";
+const baseUri = "https://market-staging.huww98.cn/api";
+// const baseUri = "http://localhost:8080";
 
 const ErrorCode = {
   InvalidJwt: 'invalid-jwt',
@@ -163,6 +163,10 @@ export function getAllGoodsInCategory(categoryId, page) {
   });
 }
 
+export function getGoods(goodsId) {
+  return getApi(`/goods/${goodsId}`);
+}
+
 export function uploadFile(localPath) {
   const uri = buildUri('/wechat/uploadfile');
   return new Promise((resolve, reject) => wx.uploadFile({
@@ -183,6 +187,10 @@ export function createGoods(goodsDescription) {
 
 export function getAllFavorite() {
   return getApi('/goods/favorite', { withAuthorization: true });
+}
+
+export function addToFavorite(goodsId) {
+  return postApi(`/goods/${goodsId}/addToFavorite`, null, { withAuthorization: true });
 }
 
 export function deleteFromFavorite(goodsId) {
