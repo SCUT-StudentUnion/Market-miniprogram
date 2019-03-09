@@ -7,6 +7,14 @@
   box-sizing: border-box;
 }
 
+.no-item {
+  height: 30vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 page {
   background-color: #f8f8f8;
   font-size: 16px;

@@ -1,5 +1,5 @@
 import { area, sellOrBuy } from "../../i18n.js";
-import { uploadFile, createGoods } from "../../api.js"
+import { uploadFile, createGoods, updateGoods, getMy } from "../../api.js"
 
 const descriptionDefaults = {
   active: 'sell'
@@ -19,7 +19,16 @@ Page({
     sellOrBuy: Object.keys(sellOrBuy),
     area: Object.keys(area)
   },
-  onLoad() {
+  onLoad({ descriptionId }) {
+    if (descriptionId) {
+      getMy(descriptionId).then(({ goods, photos, ...description}) => {
+        this.setData({
+          description,
+          goods,
+          localPhotos: photos.map(p => ({path: p.url, remoteId: p.id}))
+        });
+      })
+    }
   },
   selectCategory() {
     wx.navigateTo({
@@ -103,20 +112,21 @@ Page({
         this.setData({
           'description.photos': this.data.localPhotos.map(p => ({id: p.remoteId}))
         });
-        return createGoods(this.data.description);
+        if (this.data.goods) {
+          return updateGoods(this.data.goods.id, this.data.description);
+        } else {
+          return createGoods(this.data.description);
+        }
       }).then(() => {
         wx.hideLoading();
         wx.showModal({
           title: '提交成功',
           content: '校会工作人员将为您尽快审核',
-          showCancel: false
+          showCancel: false,
+          success() {
+            wx.navigateBack();
+          }
         })
-        this.setData({
-          description: {
-            ...descriptionDefaults
-          },
-          localPhotos: []
-        });
       }).catch(e => {
         wx.hideLoading();
         wx.showToast({

@@ -1,0 +1,33 @@
+.item {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  padding: 5px 10px;
+  margin: 5px 0;
+  background: #fff;
+}
+
+.item image {
+  width: 250rpx;
+  height: 250rpx;
+  margin-right: 5px;
+  flex: none;
+}
+
+.item .detail {
+  flex: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.item .title {
+  margin-bottom: 5px;
+}
+
+.item .operations {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-end;
+  flex: auto;
+}

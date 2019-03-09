@@ -1,5 +1,5 @@
-const baseUri = "https://market-staging.huww98.cn/api";
-// const baseUri = "http://localhost:8080";
+// const baseUri = "https://market-staging.huww98.cn/api";
+const baseUri = "http://localhost:8080";
 
 const ErrorCode = {
   InvalidJwt: 'invalid-jwt',
@@ -74,32 +74,32 @@ function callApiWithAuthorization(path, init) {
   }
 }
 
-function callApiWarpper(path, init) {
-  if (init && init.withAuthorization) {
-    delete init.withAuthorization;
-    return callApiWithAuthorization(path, init);
+function callApiWarpper(method, path, body, init) {
+  const builtInit = {
+    method,
+    ...init
+  }
+  if (body) {
+    builtInit.data = body;
+  }
+  if (builtInit && builtInit.withAuthorization) {
+    delete builtInit.withAuthorization;
+    return callApiWithAuthorization(path, builtInit);
   } else {
-    return callApi(path, init);
+    return callApi(path, builtInit);
   }
 }
 
 function getApi(path, init) {
-  const builtInit = {
-    method: 'GET',
-    ...init
-  }
-  return callApiWarpper(path, builtInit);
+  return callApiWarpper('GET', path, null, init);
 }
 
 function postApi(path, body, init) {
-  const builtInit = {
-    method: 'POST',
-    ...init
-  };
-  if(body) {
-    builtInit.data = body;
-  }
-  return callApiWarpper(path, builtInit);
+  return callApiWarpper('POST', path, body, init);
+}
+
+function putApi(path, body, init) {
+  return callApiWarpper('PUT', path, body, init);
 }
 
 const jwtStorageKey = "JWT";
@@ -172,4 +172,16 @@ export function getAllFavorite() {
 
 export function deleteFromFavorite(goodsId) {
   return postApi(`/goods/${goodsId}/deleteFromFavorite`, null, { withAuthorization: true });
+}
+
+export function getAllMy() {
+  return getApi('/goods/my', { withAuthorization: true });
+}
+
+export function getMy(descriptionId) {
+  return getApi(`/goods/my/${descriptionId}`, { withAuthorization: true });
+}
+
+export function updateGoods(goodsId, description) {
+  return putApi(`/goods/${goodsId}`, description, { withAuthorization: true });
 }

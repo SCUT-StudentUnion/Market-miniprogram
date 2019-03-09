@@ -1,0 +1,20 @@
+<view class="item" wx:for="{{descriptions}}" wx:key="{{item.id}}">
+  <image wx:if="{{item.photos.length > 0}}" mode='aspectFill' src="{{item.photos[0].url}}"/>
+  <view class='detail'>
+    <view class='title'>[{{i18n.sellOrBuy[item.active]}}] {{item.title}}</view>
+    <van-tag wx:if="{{item.reviewStatus == 'pending'}}" size="large">{{item.goods.isPublished ? '修改审核中' : '审核中'}}</van-tag>
+    <van-tag wx:if="{{item.reviewStatus == 'approved'}}" type="success" size="large">已上架</van-tag>
+    <view wx:if="{{item.reviewStatus == 'changeRequested'}}">
+      <van-tag type="danger" size="large">{{item.goods.isPublished ? '修改审核未通过' : '审核未通过'}}</van-tag>
+      <view>未通过原因：{{item.reviewComment}}</view>
+    </view>
+
+    <view class='operations'>
+      <van-button size="small" data-description-id="{{item.id}}" bind:click="onUpdate">修改</van-button>
+    </view>
+  </view>
+</view>
+
+<view class='no-item' wx:if="{{descriptions.length == 0}}">
+你还没有发布
+</view>

@@ -18,3 +18,7 @@
 .header .nick-name {
   color: white;
 }
+
+.cell-group {
+  margin-bottom: 20px;
+}
