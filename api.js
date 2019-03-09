@@ -30,11 +30,24 @@ function buildUri(path) {
 
 function callApi(path, init) {
   let builtUri = buildUri(path);
-  if (init && init.query) {
-    const params = new URLSearchParams(init.query);
-    builtUri += "?" + params;
-    delete init.query;
+  if (init) {
+    let builtQuery = init.query;
+    if (init.query) {
+      delete init.query;
+    }
+    if (init.paging) {
+      builtQuery = {
+        page: init.paging.page,
+        size: init.paging.size || 10,
+        ...builtQuery
+      }
+    }
+    if (builtQuery) {
+      const params = Object.entries(builtQuery).map(([key, value]) => `${key}=${encodeURIComponent(value)}`);
+      builtUri += "?" + Array.prototype.join.call(params, "&");
+    }
   }
+
   return new Promise((resolve, reject) => {
     wx.request({
       ...init,
@@ -144,8 +157,10 @@ export function getAllCategories() {
   return getApi("/categories");
 }
 
-export function getAllGoodsInCategory(categoryId) {
-  return getApi(`/categories/${categoryId}/goods`);
+export function getAllGoodsInCategory(categoryId, page) {
+  return getApi(`/categories/${categoryId}/goods`, {
+    paging: { page }
+  });
 }
 
 export function uploadFile(localPath) {
