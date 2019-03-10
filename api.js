@@ -185,8 +185,11 @@ export function createGoods(goodsDescription) {
   return postApi('/goods', goodsDescription, { withAuthorization: true });
 }
 
-export function getAllFavorite() {
-  return getApi('/goods/favorite', { withAuthorization: true });
+export function getAllFavorite(page) {
+  return getApi('/goods/favorite', {
+    withAuthorization: true,
+    paging: { page } 
+  });
 }
 
 export function addToFavorite(goodsId) {
@@ -197,8 +200,11 @@ export function deleteFromFavorite(goodsId) {
   return postApi(`/goods/${goodsId}/deleteFromFavorite`, null, { withAuthorization: true });
 }
 
-export function getAllMy() {
-  return getApi('/goods/my', { withAuthorization: true });
+export function getAllMy(page) {
+  return getApi('/goods/my', {
+    withAuthorization: true,
+    paging: { page }
+  });
 }
 
 export function getMy(descriptionId) {

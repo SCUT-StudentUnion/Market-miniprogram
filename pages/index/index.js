@@ -1,7 +1,5 @@
-
 import { getAllGoodsInCategory } from "../../api.js";
 import pagedContent from "../../behaviors/pagedContent.js"
-
 
 const app = getApp();
 
@@ -21,7 +19,6 @@ Component({
       }
     ],
   },
-
   methods: {
     doLoadPage(pageToLoad) {
       if (!this.categoryPromise) {
@@ -35,18 +32,9 @@ Component({
         return getAllGoodsInCategory(category.id, pageToLoad)
       });
     },
-    onReachBottom() {
-      this.loadNextPage();
-    },
     tabChange({ detail }) {
       this.setData({ active: detail.index });
       this.loadFirstPage();
     },
-    goto(e) {
-      wx.navigateTo({
-        url: '/pages/detail/detail'
-      })
-    }
-
   }
 })

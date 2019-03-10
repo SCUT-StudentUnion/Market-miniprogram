@@ -67,6 +67,14 @@ export default Behavior({
           throw e;
         })
       return this.loadingPromise;
+    },
+    onReachBottom() {
+      this.loadNextPage();
+    },
+    onPullDownRefresh() {
+      this.loadFirstPage().then(() => {
+        wx.stopPullDownRefresh();
+      });
     }
   }
 })

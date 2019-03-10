@@ -1,5 +1,6 @@
 {
   "usingComponents": {
     "selling-goods": "/components/sellingGoods/sellingGoods"
-  }
+  },
+  "enablePullDownRefresh": true
 }

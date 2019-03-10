@@ -8,7 +8,7 @@
 }
 
 .no-item {
-  height: 30vh;
+  height: 40vh;
   width: 100%;
   display: flex;
   justify-content: center;

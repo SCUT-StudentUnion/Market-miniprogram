@@ -1,29 +1,25 @@
 import { getAllFavorite, deleteFromFavorite } from "../../api.js";
+import pagedContent from "../../behaviors/pagedContent.js"
 
-Page({
+Component({
+  behaviors: [pagedContent],
   data: {
   },
-  onLoad(options) {
-    this.loadFavorite();
-  },
-  loadFavorite() {
-    return getAllFavorite().then(favorite => {
+  methods: {
+    doLoadPage(pageToLoad) {
+      return getAllFavorite(pageToLoad);
+    },
+    delete({ currentTarget }) {
+      const goodsId = currentTarget.dataset.goodsId;
       this.setData({
-        favorite: favorite.content
+        content: this.data.content.filter(f => f.goods.id != goodsId)
       });
-    })
+      this.callApi(deleteFromFavorite(goodsId)).catch(e => {
+        wx.showToast({
+          title: '删除失败:' + e,
+          icon: 'none'
+        })
+      });
+    }
   },
-  delete({currentTarget}) {
-    const goodsId = currentTarget.dataset.goodsId;
-    this.setData({
-      favorite: this.data.favorite.filter(f => f.goods.id != goodsId)
-    });
-    deleteFromFavorite(goodsId).catch(e =>{
-      wx.showToast({
-        title: '删除失败:' + e,
-        icon: 'none'
-      })
-      return this.loadFavorite()
-    });
-  }
 })

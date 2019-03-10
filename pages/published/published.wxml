@@ -1,4 +1,4 @@
-<view class="item" wx:for="{{descriptions}}" wx:key="{{item.id}}">
+<view class="item" wx:for="{{content}}" wx:key="{{item.id}}">
   <image wx:if="{{item.photos.length > 0}}" mode='aspectFill' src="{{item.photos[0].url}}"/>
   <view class='detail'>
     <view class='title'>[{{i18n.sellOrBuy[item.active]}}] {{item.title}}</view>
@@ -15,6 +15,7 @@
   </view>
 </view>
 
-<view class='no-item' wx:if="{{descriptions.length == 0}}">
+<view class='no-item' wx:if="{{content.length == 0}}">
 你还没有发布
 </view>
+<view wx:elif="{{isLastPage}}" class='no-more-item'>没有更多发布了</view>
