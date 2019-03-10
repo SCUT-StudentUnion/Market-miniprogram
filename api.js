@@ -197,10 +197,6 @@ export function deleteFromFavorite(goodsId) {
   return postApi(`/goods/${goodsId}/deleteFromFavorite`, null, { withAuthorization: true });
 }
 
-<<<<<<< HEAD
-export function getGoods(id){
-  return getApi(`/goods/${id}`);
-=======
 export function getAllMy() {
   return getApi('/goods/my', { withAuthorization: true });
 }
@@ -211,5 +207,4 @@ export function getMy(descriptionId) {
 
 export function updateGoods(goodsId, description) {
   return putApi(`/goods/${goodsId}`, description, { withAuthorization: true });
->>>>>>> dev
 }

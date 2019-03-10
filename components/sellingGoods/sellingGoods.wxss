@@ -18,12 +18,12 @@
 .item-footer {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   align-items: baseline;
 }
 
 .price {
-  color:#1173bc;
+  width: 110px;
+  color: #1173bc;
   font-size: 1.4em;
 }
 
@@ -34,5 +34,7 @@
 }
 
 .time {
+  text-align: right;
+  flex: auto;
   color: #ccc;
 }

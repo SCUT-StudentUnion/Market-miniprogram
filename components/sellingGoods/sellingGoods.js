@@ -16,4 +16,11 @@ Component({
       area, sellOrBuy
     },
   },
+  methods: {
+    navigateToDetail({ currentTarget }) {
+      wx.navigateTo({
+        url: `/pages/detail/detail?id=${currentTarget.dataset.goodsId}`,
+      })
+    }
+  }
 })
