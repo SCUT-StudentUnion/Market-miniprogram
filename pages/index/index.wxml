@@ -12,4 +12,6 @@
   <van-tab wx:for="{{categories}}" wx:key="{{item.id}}" title="{{item.name}}" />
 </van-tabs>
 
-<selling-goods wx:for="{{goodsList}}" wx:key="{{item.id}}" goods="{{item}}"/>
+<selling-goods wx:for="{{content}}" wx:key="{{item.id}}" goods="{{item}}"/>
+
+<view wx:if="{{isLastPage}}" class='no-more-item'>没有更多内容了</view>

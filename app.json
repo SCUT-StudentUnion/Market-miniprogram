@@ -1,11 +1,10 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/issue/issue",
+    "pages/published/published",
     "pages/post/post",
     "pages/detail/detail",
     "pages/i/i",
-    "pages/navigator/navigator",
     "pages/favorite/favorite",
     "pages/about/about",
     "pages/post/selectCategory",
@@ -21,16 +20,8 @@
   "tabBar": {
     "list": [
       {
-        "pagePath": "pages/navigator/navigator",
-        "text": "开发版页面"
-      },
-      {
         "pagePath": "pages/index/index",
         "text": "主页"
-      },
-      {
-        "pagePath": "pages/post/post",
-        "text": "发布"
       },
       {
         "pagePath": "pages/i/i",

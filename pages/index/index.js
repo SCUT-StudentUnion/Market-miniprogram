@@ -1,11 +1,12 @@
-import {
-  getAllGoodsInCategory,
-  getGoods
-} from "../../api.js";
+
+import { getAllGoodsInCategory } from "../../api.js";
+import pagedContent from "../../behaviors/pagedContent.js"
+
 
 const app = getApp();
 
-Page({
+Component({
+  behaviors: [pagedContent],
   data: {
     active: 0,
     carousel: [{
@@ -20,36 +21,32 @@ Page({
       }
     ],
   },
-  loadGoods() {
-    const category = this.data.categories[this.data.active];
-    getAllGoodsInCategory(category.id)
-      .then(({
-        content
-      }) => {
-        this.setData({
-          goodsList: content
-        });
-      });
 
-  },
-  tabChange({
-    detail
-  }) {
-    this.setData({
-      active: detail.index
-    });
-    this.loadGoods();
-  },
-  onLoad() {
-    app.globalData.allCategoriesPromise
-      .then(categories => this.setData({
-        categories
-      }))
-      .then(this.loadGoods);
-  },
-  goto(e) {
-    wx.navigateTo({
-      url: '/pages/detail/detail'
-    })
+  methods: {
+    doLoadPage(pageToLoad) {
+      if (!this.categoryPromise) {
+        this.categoryPromise = app.globalData.allCategoriesPromise
+          .then(categories => {
+            this.setData({ categories })
+          });
+      }
+      return this.categoryPromise.then(() => {
+        const category = this.data.categories[this.data.active];
+        return getAllGoodsInCategory(category.id, pageToLoad)
+      });
+    },
+    onReachBottom() {
+      this.loadNextPage();
+    },
+    tabChange({ detail }) {
+      this.setData({ active: detail.index });
+      this.loadFirstPage();
+    },
+    goto(e) {
+      wx.navigateTo({
+        url: '/pages/detail/detail'
+      })
+    }
+
   }
 })

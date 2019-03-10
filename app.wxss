@@ -7,6 +7,21 @@
   box-sizing: border-box;
 }
 
+.no-item {
+  height: 30vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.no-more-item {
+  width: 100%;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 25px;
+}
+
 page {
   background-color: #f8f8f8;
   font-size: 16px;

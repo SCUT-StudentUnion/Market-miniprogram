@@ -17,7 +17,7 @@
     <van-cell>
       <view class='photo-list'>
         <image wx:for="{{localPhotos}}" wx:key="{{item.path}}" src='{{item.path}}' mode='aspectFill' data-photo='{{item}}' bindtap='onDeleteImage' />
-        <image wx:if="{{localPhotos.length < maxPhotoCount}}" src='/images/upload.png' mode='aspectFill' bindtap='onSelectImage' />
+        <image wx:if="{{localPhotos.length < maxPhotoCount}}" src='/images/addPhoto.svg' bindtap='onSelectImage' />
       </view>
     </van-cell>
 
@@ -33,7 +33,7 @@
 
   <cover-view class='submit'>
     <button type='primary' form-type='submit'>
-      提交审核
+      {{goods ? '更改提交审核' : '提交审核' }}
     </button>
   </cover-view>
 </form>

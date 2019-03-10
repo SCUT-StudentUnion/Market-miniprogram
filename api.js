@@ -30,11 +30,24 @@ function buildUri(path) {
 
 function callApi(path, init) {
   let builtUri = buildUri(path);
-  if (init && init.query) {
-    const params = new URLSearchParams(init.query);
-    builtUri += "?" + params;
-    delete init.query;
+  if (init) {
+    let builtQuery = init.query;
+    if (init.query) {
+      delete init.query;
+    }
+    if (init.paging) {
+      builtQuery = {
+        page: init.paging.page,
+        size: init.paging.size || 10,
+        ...builtQuery
+      }
+    }
+    if (builtQuery) {
+      const params = Object.entries(builtQuery).map(([key, value]) => `${key}=${encodeURIComponent(value)}`);
+      builtUri += "?" + Array.prototype.join.call(params, "&");
+    }
   }
+
   return new Promise((resolve, reject) => {
     wx.request({
       ...init,
@@ -74,32 +87,32 @@ function callApiWithAuthorization(path, init) {
   }
 }
 
-function callApiWarpper(path, init) {
-  if (init && init.withAuthorization) {
-    delete init.withAuthorization;
-    return callApiWithAuthorization(path, init);
+function callApiWarpper(method, path, body, init) {
+  const builtInit = {
+    method,
+    ...init
+  }
+  if (body) {
+    builtInit.data = body;
+  }
+  if (builtInit && builtInit.withAuthorization) {
+    delete builtInit.withAuthorization;
+    return callApiWithAuthorization(path, builtInit);
   } else {
-    return callApi(path, init);
+    return callApi(path, builtInit);
   }
 }
 
 function getApi(path, init) {
-  const builtInit = {
-    method: 'GET',
-    ...init
-  }
-  return callApiWarpper(path, builtInit);
+  return callApiWarpper('GET', path, null, init);
 }
 
 function postApi(path, body, init) {
-  const builtInit = {
-    method: 'POST',
-    ...init
-  };
-  if(body) {
-    builtInit.data = body;
-  }
-  return callApiWarpper(path, builtInit);
+  return callApiWarpper('POST', path, body, init);
+}
+
+function putApi(path, body, init) {
+  return callApiWarpper('PUT', path, body, init);
 }
 
 const jwtStorageKey = "JWT";
@@ -144,8 +157,14 @@ export function getAllCategories() {
   return getApi("/categories");
 }
 
-export function getAllGoodsInCategory(categoryId) {
-  return getApi(`/categories/${categoryId}/goods`);
+export function getAllGoodsInCategory(categoryId, page) {
+  return getApi(`/categories/${categoryId}/goods`, {
+    paging: { page }
+  });
+}
+
+export function getGoods(goodsId) {
+  return getApi(`/goods/${goodsId}`);
 }
 
 export function uploadFile(localPath) {
@@ -170,10 +189,27 @@ export function getAllFavorite() {
   return getApi('/goods/favorite', { withAuthorization: true });
 }
 
+export function addToFavorite(goodsId) {
+  return postApi(`/goods/${goodsId}/addToFavorite`, null, { withAuthorization: true });
+}
+
 export function deleteFromFavorite(goodsId) {
   return postApi(`/goods/${goodsId}/deleteFromFavorite`, null, { withAuthorization: true });
 }
 
+<<<<<<< HEAD
 export function getGoods(id){
   return getApi(`/goods/${id}`);
+=======
+export function getAllMy() {
+  return getApi('/goods/my', { withAuthorization: true });
+}
+
+export function getMy(descriptionId) {
+  return getApi(`/goods/my/${descriptionId}`, { withAuthorization: true });
+}
+
+export function updateGoods(goodsId, description) {
+  return putApi(`/goods/${goodsId}`, description, { withAuthorization: true });
+>>>>>>> dev
 }
