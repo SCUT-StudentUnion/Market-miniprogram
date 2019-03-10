@@ -13,7 +13,7 @@
   </view>
 
     <view class="uploader">
-    <navigator url="../detail/detail?id=1" open-type="navigate" class="uploader-text">
+    <navigator url="../detail/detail?id=2" open-type="navigate" class="uploader-text">
       <text style='padding-left:40px'>商品详细信息</text>
     </navigator>
   </view>

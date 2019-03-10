@@ -173,3 +173,7 @@ export function getAllFavorite() {
 export function deleteFromFavorite(goodsId) {
   return postApi(`/goods/${goodsId}/deleteFromFavorite`, null, { withAuthorization: true });
 }
+
+export function getGoods(id){
+  return getApi(`/goods/${id}`);
+}
