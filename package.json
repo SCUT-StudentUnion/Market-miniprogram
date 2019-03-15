@@ -1,0 +1,17 @@
+{
+  "name": "market-miniprogram",
+  "version": "0.2.1",
+  "description": "华南理工大学学生会二手交易市场微信小程序",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SCUT-StudentUnion/Market-miniprogram.git"
+  },
+  "author": "SCUT-StudentUnion",
+  "bugs": {
+    "url": "https://github.com/SCUT-StudentUnion/Market-miniprogram/issues"
+  },
+  "homepage": "https://github.com/SCUT-StudentUnion/Market-miniprogram#readme",
+  "dependencies": {
+    "vant-weapp": "^0.5.6"
+  }
+}

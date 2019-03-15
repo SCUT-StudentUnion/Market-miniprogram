@@ -1,0 +1,24 @@
+.header {
+  height: 300rpx;
+  background:#0071bd;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.header .avatar {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  display: block;
+  overflow: hidden;
+}
+
+.header .nick-name {
+  color: white;
+}
+
+.cell-group {
+  margin-bottom: 20px;
+}

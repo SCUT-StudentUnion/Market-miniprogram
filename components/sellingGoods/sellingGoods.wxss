@@ -1,0 +1,40 @@
+.photo-list {
+  display: flex;
+  flex-direction: row;
+}
+
+.photo-list image {
+  margin: 1px;
+  height: 230rpx;
+  width: 230rpx;
+}
+
+.item {
+  padding: 0 10px;
+  margin: 5px 0;
+  background: #fff
+}
+
+.item-footer {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+.price {
+  width: 110px;
+  color: #1173bc;
+  font-size: 1.4em;
+}
+
+.area {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.time {
+  text-align: right;
+  flex: auto;
+  color: #ccc;
+}

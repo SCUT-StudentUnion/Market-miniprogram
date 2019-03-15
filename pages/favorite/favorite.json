@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "selling-goods": "/components/sellingGoods/sellingGoods"
+  },
+  "navigationBarTitleText": "我的收藏",
+  "enablePullDownRefresh": true
+}

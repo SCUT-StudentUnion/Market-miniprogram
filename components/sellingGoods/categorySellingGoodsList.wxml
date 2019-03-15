@@ -1,0 +1,5 @@
+<selling-goods wx:for="{{content}}" wx:key="{{item.id}}" goods="{{item}}"/>
+<view class="loading" wx:if="{{loadingNextPage}}">
+  <van-loading />
+</view>
+<view wx:if="{{isLastPage}}" class='no-more-item'>没有更多内容了</view>

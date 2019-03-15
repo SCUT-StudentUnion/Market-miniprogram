@@ -1,1 +1,6 @@
-{}
+{
+  "usingComponents": {
+    "selling-goods-list": "/components/sellingGoods/categorySellingGoodsList"
+  },
+  "enablePullDownRefresh": true
+}

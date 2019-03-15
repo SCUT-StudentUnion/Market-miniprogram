@@ -1,9 +1,14 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/list/list",
+    "pages/published/published",
     "pages/post/post",
-    "pages/detail/detail"
+    "pages/detail/detail",
+    "pages/i/i",
+    "pages/favorite/favorite",
+    "pages/about/about",
+    "pages/post/selectCategory",
+    "pages/post/selectArea"
   ],
   "window": {
     "backgroundColor": "#0071BD",
@@ -19,17 +24,38 @@
         "text": "主页"
       },
       {
-        "pagePath": "pages/post/post",
-        "text": "发布"
+        "pagePath": "pages/i/i",
+        "text": "我"
       }
     ],
     "color": "#cccccc",
     "selectedColor": "#00b26a"
   },
   "networkTimeout": {
-    "request": 10000,
+    "request": 20000,
     "connectSocket": 10000,
-    "uploadFile": 10000,
+    "uploadFile": 60000,
     "downloadFile": 10000
+  },
+  "usingComponents": {
+    "van-button": "vant-weapp/button",
+    "van-icon": "vant-weapp/icon",
+    "van-tab": "vant-weapp/tab",
+    "van-tabs": "vant-weapp/tabs",
+    "van-panel": "vant-weapp/panel",
+    "van-cell": "vant-weapp/cell",
+    "van-cell-group": "vant-weapp/cell-group",
+    "van-slider": "vant-weapp/slider",
+    "van-progress": "vant-weapp/progress",
+    "van-checkbox": "vant-weapp/checkbox",
+    "van-checkbox-group": "vant-weapp/checkbox-group",
+    "van-radio": "vant-weapp/radio",
+    "van-radio-group": "vant-weapp/radio-group",
+    "van-search": "vant-weapp/search",
+    "van-tag": "vant-weapp/tag",
+    "van-field": "vant-weapp/field",
+    "van-popup": "vant-weapp/popup",
+    "van-swipe-cell": "vant-weapp/swipe-cell",
+    "van-loading": "vant-weapp/loading"
   }
 }

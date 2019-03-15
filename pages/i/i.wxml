@@ -1,0 +1,17 @@
+<view class="header">
+  <open-data type="userAvatarUrl" class="avatar" />
+  <open-data type="userNickName" class="nick-name" />
+</view>
+
+<view class="cell-group">
+  <van-cell-group>
+    <van-cell is-link title="我的发布" url="../published/published" />
+    <van-cell is-link title="我的收藏" url="../favorite/favorite" />
+    <van-cell is-link title="关于我们" url="../about/about" />
+  </van-cell-group>
+</view>
+<view class="cell-group">
+  <van-cell-group class="cell-group">
+    <van-cell is-link title="发布商品" url="../post/post" />
+  </van-cell-group>
+</view>

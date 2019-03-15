@@ -1,0 +1,9 @@
+text {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align:center;
+  color:#6e6e6e;
+  font-size:0.8em
+}

@@ -1,0 +1,17 @@
+<view class='item' bindtap="navigateToDetail" data-goods-id='{{goods.id}}'>
+  <view>[{{i18n.sellOrBuy[goods.currentDescription.active]}}] {{goods.currentDescription.title}}</view>
+
+  <view class='photo-list'>
+    <image mode='aspectFill' wx:for="{{photosInList}}" wx:for-item="p" wx:key="p.id" src='{{p.url}}'></image>
+  </view>
+  <view wx:if="{{goods.currentDescription.detail}}">{{goods.currentDescription.detail}}</view>
+
+  <view class='item-footer'>
+    <view class='price'>{{goods.currentDescription.sellingPrice ? '¥' + goods.currentDescription.sellingPrice : '价格面议'}}</view>
+    <view class="area">
+      <van-icon name="location" size="1.2em" />
+      <view>{{i18n.area[goods.currentDescription.area]}}</view>
+    </view>
+    <view class="time">1分钟前</view>
+  </view>
+</view>

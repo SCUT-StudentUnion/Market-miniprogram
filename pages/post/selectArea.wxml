@@ -1,0 +1,4 @@
+<van-cell-group>
+  <van-cell clickable wx:for="{{area}}" wx:key="{{item}}"
+    data-area="{{item}}" title="{{i18n.area[item]}}" bind:click="onAreaSelected" />
+</van-cell-group>

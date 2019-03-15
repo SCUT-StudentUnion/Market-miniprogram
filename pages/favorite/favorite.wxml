@@ -1,0 +1,9 @@
+<van-swipe-cell right-width="{{ 65 }}" wx:for="{{content}}" wx:key="{{item.goods.id}}">
+  <selling-goods goods="{{item.goods}}"/>
+  <view class="delete-btn" slot="right" data-goods-id="{{item.goods.id}}" bindtap="delete">删除</view>
+</van-swipe-cell>
+
+<view class='no-item' wx:if="{{content.length == 0}}">
+你还没有收藏
+</view>
+<view wx:elif="{{isLastPage}}" class='no-more-item'>没有更多收藏了</view>

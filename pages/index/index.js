@@ -1,42 +1,60 @@
-const app = getApp()
+const app = getApp();
 
-Page({
+Component({
   data: {
-    avatarUrl: './user-unlogin.png',
-    userInfo: {},
-    logged: false,
-    takeSession: false,
-    requestResult: ''
-  },
-
-  onLoad: function () {
-
-    // 获取用户信息
-    wx.getSetting({
-      success: res => {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-          wx.getUserInfo({
-            success: res => {
-              this.setData({
-                avatarUrl: res.userInfo.avatarUrl,
-                userInfo: res.userInfo
-              })
-            }
-          })
-        }
+    active: 0,
+    carousel: [{
+        id: 0,
+        img: '/images/s1.jpg',
+        url: '/pages/detail/detail'
+      },
+      {
+        id: 1,
+        img: '/images/psb2.jpeg',
+        url: '/pages/detail/detail'
       }
-    })
+    ],
   },
-
-  onGetUserInfo: function (e) {
-    if (!this.logged && e.detail.userInfo) {
+  lifetimes: {
+    attached() {
+      app.globalData.allCategoriesPromise
+        .then(categories => {
+          this.setData({ categories })
+        });
+        this.loadList(0);
+    },
+  },
+  pageLifetimes: {
+    show() {
+      const lists = this.selectAllComponents(".list");
+      if (lists.every(l => !l.data.loadingNextPage)) {
+        wx.stopPullDownRefresh();
+      }
+    },
+  },
+  methods: {
+    activeList() {
+      return this.selectComponent(`#list-${this.data.active}`);
+    },
+    onPullDownRefresh() {
+      // Unload all lists but active one.
+      this.setData({ 
+        listLoaded: [],
+        [`listLoaded[${this.data.active}]`]: true
+      });
+      this.activeList().onPullDownRefresh();
+    },
+    onReachBottom() {
+      this.activeList().onReachBottom();
+    },
+    loadList(index) {
       this.setData({
-        logged: true,
-        avatarUrl: e.detail.userInfo.avatarUrl,
-        userInfo: e.detail.userInfo
-      })
-    }
-  },
-
+        active: index,
+        [`listLoaded[${index}]`]: true
+      });
+    },
+    tabChange({ detail: {index} }) {
+      this.loadList(index);
+    },
+  }
 })
