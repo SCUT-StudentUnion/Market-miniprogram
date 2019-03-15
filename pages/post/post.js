@@ -1,13 +1,14 @@
 import { area, sellOrBuy } from "../../i18n.js";
 import { uploadFile, createGoods, updateGoods, getMy } from "../../api.js"
 import apiCall from '../../behaviors/apiCall.js'
+import navigationBarLoading from "../../behaviors/navigationBarLoading.js"
 
 const descriptionDefaults = {
   active: 'sell'
 };
 
 Component({
-  behaviors: [apiCall],
+  behaviors: [apiCall, navigationBarLoading],
   properties: {
     descriptionId: Number
   },

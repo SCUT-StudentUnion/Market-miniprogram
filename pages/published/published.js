@@ -1,9 +1,10 @@
 import { area, sellOrBuy } from "../../i18n.js";
 import { getAllMy } from "../../api.js"
-import pagedContent from "../../behaviors/pagedContent.js"
+import { pagedContentSyncStateOnLoad } from "../../behaviors/pagedContent.js"
+import navigationBarLoading from "../../behaviors/navigationBarLoading.js"
 
 Component({
-  behaviors: [pagedContent],
+  behaviors: [pagedContentSyncStateOnLoad, navigationBarLoading],
   data: {
     i18n: {
       area, sellOrBuy

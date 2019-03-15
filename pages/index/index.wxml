@@ -8,10 +8,10 @@
   </swiper-item>
 </swiper>
 
-<van-tabs active="{{active}}" color="#1173bc" bind:change="tabChange">
-  <van-tab wx:for="{{categories}}" wx:key="{{item.id}}" title="{{item.name}}" />
-</van-tabs>
-
-<selling-goods wx:for="{{content}}" wx:key="{{item.id}}" goods="{{item}}"/>
-
-<view wx:if="{{isLastPage}}" class='no-more-item'>没有更多内容了</view>
+<view class="content">
+  <van-tabs sticky active="{{active}}" color="#1173bc" bind:change="tabChange">
+    <van-tab wx:for="{{categories}}" wx:key="{{item.id}}" title="{{item.name}}">
+      <selling-goods-list class="list" id="list-{{index}}" wx:if="{{listLoaded[index]}}" category-id="{{item.id}}"/>
+    </van-tab>
+  </van-tabs>
+</view>

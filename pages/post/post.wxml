@@ -32,7 +32,7 @@
   </van-cell-group>
 
   <cover-view class='submit'>
-    <button type='primary' form-type='submit'>
+    <button type='primary' form-type='submit' disabled='{{loading}}'>
       {{goods ? '更改提交审核' : '提交审核' }}
     </button>
   </cover-view>

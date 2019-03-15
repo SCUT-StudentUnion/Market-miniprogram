@@ -1,10 +1,6 @@
-import { getAllGoodsInCategory } from "../../api.js";
-import pagedContent from "../../behaviors/pagedContent.js"
-
 const app = getApp();
 
 Component({
-  behaviors: [pagedContent],
   data: {
     active: 0,
     carousel: [{
@@ -19,22 +15,46 @@ Component({
       }
     ],
   },
-  methods: {
-    doLoadPage(pageToLoad) {
-      if (!this.categoryPromise) {
-        this.categoryPromise = app.globalData.allCategoriesPromise
-          .then(categories => {
-            this.setData({ categories })
-          });
+  lifetimes: {
+    attached() {
+      app.globalData.allCategoriesPromise
+        .then(categories => {
+          this.setData({ categories })
+        });
+        this.loadList(0);
+    },
+  },
+  pageLifetimes: {
+    show() {
+      const lists = this.selectAllComponents(".list");
+      if (lists.every(l => !l.data.loadingNextPage)) {
+        wx.stopPullDownRefresh();
       }
-      return this.categoryPromise.then(() => {
-        const category = this.data.categories[this.data.active];
-        return getAllGoodsInCategory(category.id, pageToLoad)
+    },
+  },
+  methods: {
+    activeList() {
+      return this.selectComponent(`#list-${this.data.active}`);
+    },
+    onPullDownRefresh() {
+      // Unload all lists but active one.
+      this.setData({ 
+        listLoaded: [],
+        [`listLoaded[${this.data.active}]`]: true
+      });
+      this.activeList().onPullDownRefresh();
+    },
+    onReachBottom() {
+      this.activeList().onReachBottom();
+    },
+    loadList(index) {
+      this.setData({
+        active: index,
+        [`listLoaded[${index}]`]: true
       });
     },
-    tabChange({ detail }) {
-      this.setData({ active: detail.index });
-      this.loadFirstPage();
+    tabChange({ detail: {index} }) {
+      this.loadList(index);
     },
   }
 })

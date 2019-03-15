@@ -1,6 +1,6 @@
 import apiCall from './apiCall.js'
 
-export default Behavior({
+const pagedContent = Behavior({
   behaviors: [apiCall],
   data: {
     totalPages: 0,
@@ -15,28 +15,42 @@ export default Behavior({
     },
   },
   methods: {
+    /**
+     * @returns {Promise}
+     */
     doLoadPage(pageToLoad) {
       throw "Must be overrided";
     },
-    loadFirstPage() {
+    /**
+     * @private
+     * @param {Promise<{}>} promise - Resolve to new data to be passed to setData.
+     */
+    _loadPage(promise) {
       this.setData({ loadingNextPage: true });
-      this.loadingPromise = this.callApi(this.doLoadPage(0))
-        .then(({ totalPages, content }) => {
-          const loadedPages = 1;
-          this.setData({
-            totalPages,
-            loadedPages,
-            isLastPage: loadedPages >= totalPages,
-            loadingNextPage: false,
-            content
-          });
+      this.loadingPromise = this.callApi(promise)
+        .then(newData => {
+          newData.isLastPage = newData.loadedPages >= newData.totalPages,
+          newData.loadingNextPage = false;
+          this.setData(newData);
           this.loadingPromise = null;
-        }).catch(e => {
+        }, e => {
           this.setData({ loadingNextPage: false });
           this.loadingPromise = null;
           throw e;
-        })
+        });
       return this.loadingPromise;
+    },
+    loadFirstPage() {
+      const loadPagePromise = this.doLoadPage(0)
+        .then(({ totalPages, content }) => {
+          const loadedPages = 1;
+          return {
+            totalPages,
+            loadedPages,
+            content
+          };
+        });
+      return this._loadPage(loadPagePromise);
     },
     loadNextPage() {
       if (this.data.isLastPage) {
@@ -45,36 +59,40 @@ export default Behavior({
       if (this.loadingPromise) {
         return this.loadingPromise;
       }
-      this.setData({ loadingNextPage: true });
-      this.loadingPromise = this.callApi(this.doLoadPage(this.data.loadedPages))
-        .then(({totalPages, content}) => {
-          const loadedPages = this.data.loadedPages + 1;
-          const newData = { 
+      const loadPagePromise = this.doLoadPage(this.data.loadedPages)
+        .then(({ totalPages, content }) => {
+          const newData = {
             totalPages,
-            loadedPages,
-            isLastPage: loadedPages > totalPages,
-            loadingNextPage: false
+            loadedPages: this.data.loadedPages + 1,
           };
           const previousLength = (this.data.content || []).length;
           content.forEach((item, index) => {
             newData[`content[${previousLength + index}]`] = item
           });
-          this.setData(newData)
-          this.loadingPromise = null;
-        }).catch(e => {
-          this.setData({ loadingNextPage: false });
-          this.loadingPromise = null;
-          throw e;
+          return newData;
         })
-      return this.loadingPromise;
+      return this._loadPage(loadPagePromise);
     },
     onReachBottom() {
       this.loadNextPage();
     },
     onPullDownRefresh() {
-      this.loadFirstPage().then(() => {
-        wx.stopPullDownRefresh();
-      });
+      const stopRefresh = () => {
+        wx.stopPullDownRefresh()
+      }
+      this.loadFirstPage().then(stopRefresh, stopRefresh);
     }
   }
 })
+
+export default pagedContent;
+export const pagedContentSyncStateOnLoad = Behavior({
+  behaviors: [pagedContent],
+  pageLifetimes: {
+    show() {
+      if (!this.data.loadingNextPage) {
+        wx.stopPullDownRefresh();
+      }
+    },
+  },
+});

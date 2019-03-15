@@ -5,7 +5,6 @@ export default Behavior({
   },
   methods: {
     callApi(promise) {
-      wx.showNavigationBarLoading();
       this.setData({
         loading: true,
         loadingCount: this.data.loadingCount + 1
@@ -16,17 +15,9 @@ export default Behavior({
           loading: loadingCount > 0,
           loadingCount
         });
-        if (!this.data.loading) {
-          wx.hideNavigationBarLoading();
-        }
       }
-      return promise.then(result => {
-        exitLoading();
-        return result;
-      }).catch(e => {
-        exitLoading();
-        throw e;
-      });
+      promise.then(exitLoading, exitLoading);
+      return promise;
     }
   }
 })
